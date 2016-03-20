@@ -1,0 +1,35 @@
+<div align="center">
+  <!--<p><% link_to 'Create new guestlist',new_admin_club_path%></p>-->
+  <div class="content">
+    <table class="table">
+      <tr>
+        <th>Username</th>
+        <th>Date</th>
+        <th>Club.</th>
+        <th>Couples</th>
+        <th>Mobile</th>
+        <th>Status</th>
+        <th>Options</th>
+
+      </tr>
+      <% obj.each do |guestlist| %>
+          <tr>
+            <td><%=guestlist.user.username%></td>
+            <td><%=guestlist.entry_date%></td>
+            <td><%=guestlist.club.title%></td>
+            <td><%=guestlist.couples%></td>
+            <td><%=guestlist.mobile%></td>
+            <td><%=get_status(guestlist.status)%></td>
+            <td>
+              <ul style="list-style-type: none;">
+                <li><%= link_to "Accept", admin_guestlist_path(guestlist, :status => Status::ACCEPTED), :method => :put, :confirm => "Are you sure?"%></li>
+                <li><%= link_to "Decline", admin_guestlist_path(guestlist, :status => Status::DECLINED), :method => :put, :confirm => "Are you sure?"%></li>
+                <li><%= link_to "Delete",admin_user_path(guestlist),method: :delete, data: {confirm: 'Are you sure?'}%></li>
+              </ul>
+            </td>
+
+          </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

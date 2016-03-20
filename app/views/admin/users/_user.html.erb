@@ -1,0 +1,23 @@
+<div align="center">
+  <!--<p><% link_to 'Create new club',new_admin_club_path%></p>-->
+  <div class="content">
+    <table class="table">
+      <tr>
+        <th>Club Id.</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Admin</th>
+      </tr>
+      <% obj.each do |user| %>
+          <tr>
+            <td><%=user.id%></td>
+            <td><%=user.username%></td>
+            <td><%=user.email%></td>
+            <td><%=user.admin%></td>
+            <td><%= link_to "Edit",edit_admin_user_path(user)%></td>
+            <td><%= link_to "Delete",admin_user_path(user),method: :delete, data: {confirm: 'Are you sure?'}%></td>
+          </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<head></head>
+<meta charset="utf-8">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.0.0/js/bootstrap-datepicker.min.js"></script>
+</head>
+<div class="mid-form">
+    <%= form_for(@guestlist, :html => {class: "book-form", role: "form"}) do |f| %>
+          <%= f.text_field :title, class:"",placeholder:"Title of club",autofocus:true %>
+          <%= f.text_field :title, class:"", :id => 'datepicker', placeholder:"Date",autofocus:true %>
+          <%= f.text_field :title, class:"",placeholder:"Title of club",autofocus:true %>
+          <%= f.text_field :title, class:"",placeholder:"Title of club",autofocus:true %>
+          <%= f.text_field :title, class:"",placeholder:"Title of club",autofocus:true %>
+          <%= f.submit "Submit" %>
+    <% end %>
+  <script>
+    jQuery(function () {
+      jQuery('#datepicker').datetimepicker({
+        defaultDate: "11/1/2016",
+        disabledDates: [
+          moment("12/25/2016"),
+          new Date(2016, 11 - 1, 21),
+          "11/22/2016 00:53"
+        ]
+      });
+    });
+  </script>
+</div>
+
+

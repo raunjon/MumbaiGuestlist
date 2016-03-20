@@ -1,0 +1,15 @@
+<div align="center">
+  <div class="content">
+  <table class="table">
+    <tr>
+      <th>Title</th>
+    </tr>
+
+    <% obj.each do |club| %>
+        <tr>
+          <td><%= link_to club.title,admin_club_path(club)%></td>
+        </tr>
+    <% end %>
+  </table>
+  </div>
+  </div>
