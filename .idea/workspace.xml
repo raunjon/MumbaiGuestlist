@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="aa937ecb-3927-4291-b012-ef088237bbcd" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/controllers/Admin/admin.rb" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/controllers/concerns/Admin/clubs_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/Admin/clubs_controller.rb" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/controllers/concerns/Admin/guestlists_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/Admin/guestlists_controller.rb" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/controllers/concerns/Admin/sessions_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/Admin/sessions_controller.rb" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/app/controllers/concerns/Admin/users_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/Admin/users_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="aa937ecb-3927-4291-b012-ef088237bbcd" name="Default" comment="" />
     <ignored path="mgl_revamp.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/.bundle/" />
