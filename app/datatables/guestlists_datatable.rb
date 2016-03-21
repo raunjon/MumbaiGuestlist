@@ -3,7 +3,7 @@ include Rails.application.routes.url_helpers
 class GuestlistsDatatable
   delegate :params, :link_to, :number_to_currency, to: :@view
 
-  def initialize(view)
+  def initialize(view,source)
     @view = view
   end
 

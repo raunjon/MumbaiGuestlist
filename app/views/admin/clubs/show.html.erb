@@ -2,4 +2,6 @@
 <div align="center">
   <p>
     Title: <%=@club.title %>
+    <%= render 'admin/guestlists/guestlist', obj:@club.guestlists%>
+
   </p>
