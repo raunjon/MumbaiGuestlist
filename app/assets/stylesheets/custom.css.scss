@@ -10,7 +10,7 @@ div#container {width:100%; margin:0 auto;}
 ul#nav li a { color:#ccc; display:block; padding:12px; font-size:0.9em; border-bottom: 1px solid #0A0A0A; 	-webkit-transition: 0.2s; -moz-transition: 0.2s;  -o-transition: 0.2s;  transition: 0.2s; }
 ul#nav li a:hover {background-color:#030303; color:#fff; padding-left:30px;}
 ul#nav li a:selected {background-color:#030303; color:#fff;}
-a {text-decoration:none; color:#000;}
+a {text-decoration:none;  color: #ffffff;;}
 .logo {float:left; margin-top:4px;}
 .logo a {font-size:1.6em; color:#fff;}
 .logout { float: right; margin-top: 4px;}
@@ -31,14 +31,14 @@ a {text-decoration:none; color:#000;}
 .content .form .submit { margin-top: 20px;  position:relative;  top:50%;  left:25%;  }
 .content .form form {margin: 0 auto;  width:50%;}
 .content .form input{ margin: 0 auto; width: 50%; padding:6px; font-size:13px; }
-.footer	{  position:fixed;  left:0px;  bottom:0px;  width: 100%;  margin-left:20px;  margin-right:40px;  padding-top:10px;  padding-bottom:10px;  border-top: 1px solid #EAEAEA;  color: #777;  }
-.footer a hover	{  color: #222;  }
-.footer small	{  float:left;  }
+.footer	{  position:fixed;  left:0px;  bottom:0px;  width: 100%;  margin-left:20px;  margin-right:40px;  padding-top:10px;  padding-bottom:10px;  border-top: 1px solid #EAEAEA;  color: #ffffff;  }
+.footer a {color: #fffff}
+.footer a hover	{  color: #fff;  }
+.footer small	{  float:left; color: #ffffff }
 .footer ul {  float:right;  list-style:none;  }
 .footer ul li{  float:left;  margin-left:15px;  font-size:0.8em;  }
 .header-error {  position: relative;  width: 100%; height: 50px; }
-.container-home {margin: 0; position: absolute; top: 0px;
-  left: 0; background-image: asset_url('image1.jpg'); width: 100%; height: 100%}
+.container-home {margin: 0; position: absolute; top: 0px;  left: 0; background-size:cover; background-image: asset_url('image1.jpg'); width: 100%; height: 100%; background-color: black; overflow: hidden  }
 .mid-form{position:relative; margin:20% auto 0 auto; width:100%; min-width:100%; height:500px; text-align:center;}
 .book-form{ position:relative; float:left; clear:both; height:50px; margin-top:10px; width:100%}
 .book-form input,select,input[type=submit]{ border:5px solid #575a59; height:50px; width:180px; font-size:16px; text-align:center; outline:none; margin-right:-10px; &:focus { border-color: darken(#575a59, 10%); } }

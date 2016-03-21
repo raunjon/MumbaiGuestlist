@@ -6,14 +6,14 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body bgcolor="black">
   <%= render 'layouts/navigation'%>
 
 <%= render 'layouts/messages'%>
 <div class="container">
   <%= yield %>
 </div>
-<%= render 'layouts/footer'%>
+<% render 'layouts/footer'%>
 <%= debug(params) if Rails.env.development?%>
 </body>
 </html>
