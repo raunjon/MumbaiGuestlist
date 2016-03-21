@@ -10,7 +10,7 @@ class Admin::GuestlistsController <ApplicationController
   end
 
   def show
-
+    redirect_to admin_guestlists_path
   end
 
   def edit
@@ -18,9 +18,19 @@ class Admin::GuestlistsController <ApplicationController
   end
 
   def update
-    if @guestlist.update(params.permit(:status))
+    if (@guestlist.update(params.permit(:status)))
       flash[:notice] = "Guestlist was successfully updated"
+      if params[:status]=="1"
+        @guestlist.user.autoaccept = true
+       if @guestlist.user.update_attribute(:autoaccept,true)
+        flash[:notice] = "User was successfully updated"
+      else
+        flash[:notice] = "User was not successfully updated"
+         end
+      end
       redirect_to admin_guestlists_path
+    else
+      redirect_to admin_clubs_path
     end
   end
   def create

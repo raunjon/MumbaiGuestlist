@@ -14,7 +14,6 @@ before_action 'require_user', only: [:create]
 
   def create
     @guestlist = Guestlist.new(guestlist_params)
-
     @guestlist.user = current_user
       if @guestlist.save
         flash[:notice] = "Entry made successfully"

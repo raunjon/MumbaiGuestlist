@@ -28,6 +28,9 @@ class Admin::UsersController <ApplicationController
     if @user.update(user_params)
       flash[:notice] = "User was successfully updated"
       redirect_to admin_users_path
+    else
+      flash[:notice] = "User was not successfully updated"
+      redirect_to admin_users_path
     end
   end
   private
@@ -35,6 +38,6 @@ class Admin::UsersController <ApplicationController
     @user = User.find(params[:id])
   end
   def user_params
-    params.require(:user).permit(:username, :email, :password, :admin)
+    params.require(:user).permit(:username, :email, :password, :admin, :autoaccept)
   end
 end
