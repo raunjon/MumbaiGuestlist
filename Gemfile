@@ -6,7 +6,7 @@ gem 'rails', '4.2.5'
 # Use sqlite3 as the database for Active Record
 # Use SCSS for stylesheets
 gem 'bootstrap-sass', '~> 3.3.6'
-gem 'jquery-datatables-rails', '~> 3.3.0'
+#gem 'jquery-datatables-rails', '~> 3.3.0'
 
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -26,7 +26,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 #Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
-gem 'will_paginate', '3.0.7'
+#gem 'will_paginate', '3.0.7'
 gem 'bootstrap-will_paginate', '0.0.10'
 gem 'bootstrap-datepicker-rails'
 gem 'omniauth-facebook', '~> 1.4.1'
@@ -39,6 +39,10 @@ gem 'bootstrap3-datetimepicker-rails', '~> 4.14.30'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+  gem 'jquery-datatables-rails' ,  github: 'rweng/jquery-datatables-rails'
+  gem 'jquery-ui-rails'
+
+gem 'will_paginate'
 group :development, :test do
   gem 'sqlite3'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

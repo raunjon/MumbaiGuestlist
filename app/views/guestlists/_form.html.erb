@@ -31,7 +31,7 @@
             <% username = current_user.username %>
             <% end %>
           <input type="text" placeholder="Title", value=<%=username%>></input>
-          <%= f.collection_select :club_id, Club.order(:title),:id,:title, include_blank: false , class:"book-form"%>
+          <%= f.collection_select :club_id, Club.order(:title),:id,:title, include_blank: false, html_options:{:class => 'select-custom'} %>
           <%= f.text_field :entry_date, :id => 'datetimepicker', placeholder:"Date",autofocus:false %>
           <%= f.text_field :couples, class:"",placeholder:"Couples",autofocus:true %>
           <%= f.text_field :mobile, class:"",placeholder:"Mobile",autofocus:true %>
@@ -45,7 +45,7 @@
 <script type="text/javascript">
   $(function () {
     $('#datetimepicker').datepicker({ startDate: "dateToday",
-      format: 'dd-MM-yy' , daysOfWeekDisabled: [0,1,2,4], todayHighlight: true
+      format: 'dd-MM-yyyy' , daysOfWeekDisabled: [0,1,2,4], todayHighlight: true
     });
   });
 

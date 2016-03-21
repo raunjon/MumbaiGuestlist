@@ -36,11 +36,11 @@ class ApplicationController < ActionController::Base
   end
 
   def get_status(status)
-    if status==PENDING
+    if status==Status::PENDING
       "Pending"
-    elsif status==ACCEPTED
+    elsif status==Status::ACCEPTED
       "Accepted"
-    elsif status==DECLINED
+    elsif status==Status::DECLINED
       "Declined"
     end
   end

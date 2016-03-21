@@ -1,17 +1,20 @@
 <div align="center" xmlns="http://www.w3.org/1999/html">
-  <!--<p><% link_to 'Create new guestlist',new_admin_club_path%></p>-->
+  <!--<p><%= link_to 'Create new guestlist',new_admin_club_path%></p>-->
 
   <div class="content">
     <div>
       <input type="submit" style="border: none;float: right; height: 20px; width:30px;text-align: center;">Go</input>
+
       <select name="status" id="status" style="border: none;float: right; height: 20px; text-align: center; margin-right: 20px">
+
         <option value="" style="font-size:9px;" selected>----Status----</option>
         <option value=<%=Status::PENDING%> style="font-size:9px;">Pending</option>
         <option value=<%=Status::ACCEPTED%> style="font-size:9px;">Accepted</option>
         <option value=<%=Status::DECLINED%> style="font-size:9px;">Declined</option>
       </select>
     </div>
-    <table class="table">
+    <table id="guestlists" class="display" data-source="<%=admin_guestlists_url(format "json")%>">>
+      <thead>
       <tr>
         <th>Username</th>
         <th>Date</th>
@@ -22,24 +25,10 @@
         <th>Options</th>
 
       </tr>
-      <% obj.each do |guestlist| %>
-          <tr>
-            <td><%=guestlist.user.username%></td>
-            <td><%=guestlist.entry_date%></td>
-            <td><%=guestlist.club.title%></td>
-            <td><%=guestlist.couples%></td>
-            <td><%=guestlist.mobile%></td>
-            <td><%=get_status(guestlist.status)%></td>
-            <td>
-              <ul style="list-style-type: none;">
-                <li><%= link_to "Accept", admin_guestlist_path(guestlist, :status => Status::ACCEPTED, :autoaccept => true), :method => :put, :confirm => "Are you sure?"%></li>
-                <li><%= link_to "Decline", admin_guestlist_path(guestlist, :status => Status::DECLINED), :method => :put, :confirm => "Are you sure?"%></li>
-                <li><%= link_to "Delete",admin_user_path(guestlist),method: :delete, data: {confirm: 'Are you sure?'}%></li>
-              </ul>
-            </td>
+      </thead>
+      <tbody>
+      </tbody>
 
-          </tr>
-      <% end %>
     </table>
   </div>
 </div>

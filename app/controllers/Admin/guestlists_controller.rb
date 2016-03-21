@@ -2,7 +2,11 @@ class Admin::GuestlistsController <ApplicationController
   before_action :get_guestlist, only: [:update, :destroy]
   before_action :require_admin_user
   def index
-    @guestlists = Guestlist.paginate(page: params[:page],per_page: 20);
+   # @guestlists = Guestlist.paginate(page: params[:page],per_page: 20);
+    respond_to do |format|
+      format.html
+      format.json { render json: GuestlistsDatatable.new(view_context) }
+    end
   end
 
   def new
@@ -20,7 +24,7 @@ class Admin::GuestlistsController <ApplicationController
   def update
     if (@guestlist.update(params.permit(:status)))
       flash[:notice] = "Guestlist was successfully updated"
-      if params[:status]=="1"
+      if params[:status]==Status::ACCEPTED
         @guestlist.user.autoaccept = true
        if @guestlist.user.update_attribute(:autoaccept,true)
         flash[:notice] = "User was successfully updated"
