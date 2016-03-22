@@ -2,8 +2,11 @@
   <div style=""%>
     <% if logged_in? %>
         <a style="color:white; font-size: 12px; left: 0px; margin-left: 10px; float: left">Welcome to Mumbai Guestlist: <%=current_user.name%></a>
+        <% if is_current_user_admin?%>
+            <%= link_to("(Admin)",admin_clubs_path,  { :class=>"nav-options" })%>
+        <%end%>
         <%= link_to("Log Out","signout", { :class=>"nav-options" })%>
-    <%else%>
+  <%else%>
         <%= link_to 'Log In With Facebook',"/auth/facebook",{ :class=>"nav-options" }%>
     <% end%>
   </div>

@@ -43,6 +43,6 @@ class Admin::UsersController <ApplicationController
     @user = User.find(params[:id])
   end
   def user_params
-    params.require(:user).permit(:username, :email, :password, :admin, :autoaccept)
+    params.require(:user).permit(:name, :username, :email, :password, :admin, :autoaccept, :mobile, :provider)
   end
 end
