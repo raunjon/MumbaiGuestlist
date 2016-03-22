@@ -2,6 +2,7 @@
 <meta charset="utf-8">
   <link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.1/css/datepicker.css" rel="stylesheet"/>
   <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.1/js/bootstrap-datepicker.js"></script>
+
   <!-- include your less or built css files  -->
   <!--
     <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/css/bootstrap.css" rel="stylesheet"/>
@@ -29,12 +30,13 @@
         <%= form_for(@guestlist, :html => {class: "book-form", role: "form"}) do |f| %>
             <% if logged_in?%>
             <% username = current_user.username %>
+            <% mobile = current_user.mobile%>
             <% end %>
           <input type="text" placeholder="Title", value=<%=username%>></input>
           <%= f.collection_select :club_id, Club.order(:title),:id,:title, include_blank: false, html_options:{:class => 'select-custom'} %>
-          <%= f.text_field :entry_date, :id => 'datetimepicker', placeholder:"Date",autofocus:false %>
+          <%= f.text_field :entry_date, :id => 'datetimepicker', placeholder:"Date",autofocus:false, :readonly => true %>
           <%= f.text_field :couples, class:"",placeholder:"Couples",autofocus:true %>
-          <%= f.text_field :mobile, class:"",placeholder:"Mobile",autofocus:true %>
+          <%= f.text_field :mobile, class:"",placeholder:"Mobile",autofocus:true, :value=>mobile %>
           <%= f.submit "Submit" %>
       <% end %>
       </div>

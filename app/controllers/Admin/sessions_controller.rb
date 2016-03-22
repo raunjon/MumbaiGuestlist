@@ -1,8 +1,8 @@
 class Admin::SessionsController <ApplicationController
 
   def new
-    if logged_in?
-      redirect_to clubs_path
+    if logged_in? && is_current_user_admin?
+      redirect_to admin_clubs_path
     end
   end
 

@@ -3,9 +3,10 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'guestlists#new'
+  root 'guestlists#index'
   get 'clubs', to: 'clubs#index'
- # get 'login', to: "/auth/facebook"
+  get '/mgl', to: redirect('/clubs#index')
+  # get 'login', to: "/auth/facebook"
  # post 'login', to: "auth/facebook"
   delete 'logout', to: 'sessions#destroy'
 
@@ -30,6 +31,7 @@ Rails.application.routes.draw do
     resources :clubs
     resources :guestlists
     resources :users
+    get '/', to: redirect('admin/clubs#index')
     get 'login', to: 'sessions#new'
     post 'login', to: 'sessions#create'
     delete 'logout', to: 'sessions#destroy'

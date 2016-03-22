@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
       user.provider = auth.provider
       user.uid      = auth.uid
       user.name     = auth.info.firstname
-      user.password = "abc123"
+      user.password = "facebook-provided-password"
       user.save!
     end
   end

@@ -9,6 +9,16 @@
 <div class='row'>
   <div class='col-xs-12'>
     <%= form_for([:admin, @user], :html => {class: "form-horizontal", role: "form"}) do |f| %>
+
+        <div class='form-group'>
+          <div class='control-label col-sm-2'>
+            <%= f.label :name %>
+          </div>
+          <div class='col-sm-8'>
+            <%= f.text_field :name, class:"form-control",placeholder:"First name",autofocus:true %>
+          </div>
+        </div>
+
         <div class='form-group'>
           <div class='control-label col-sm-2'>
             <%= f.label :username %>
@@ -32,7 +42,21 @@
             <%= f.label :password %>
           </div>
           <div class='col-sm-8'>
-            <%= f.password_field :password, class:"form-control",placeholder:"Password",autofocus:true %>
+            <% if !@user.nil? && @user.provider=="facebook"%>
+                 <%password = "facebook-provided-password"%>
+                 <%= f.password_field :password, class:"form-control",placeholder:"Password",autofocus:true,:value=>password,:readonly => true %>
+            <% else%>
+                <%= f.password_field :password, class:"form-control",placeholder:"Password",autofocus:true %>
+            <%end%>
+          </div>
+        </div>
+
+        <div class='form-group'>
+          <div class='control-label col-sm-2'>
+            <%= f.label :provider %>
+          </div>
+          <div class='col-sm-8'>
+            <%= f.text_field :provider, class:"form-control",placeholder:"Provider",autofocus:true %>
           </div>
         </div>
 

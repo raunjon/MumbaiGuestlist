@@ -17,6 +17,7 @@ before_action 'require_user', only: [:create]
     @guestlist.user = current_user
       if @guestlist.save
         flash[:notice] = "Entry made successfully"
+        @guestlist.user.update_attribute(:mobile, @guestlist.mobile)
         redirect_to guestlists_path
       else
         render :new

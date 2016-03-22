@@ -1,0 +1,11 @@
+<nav style="width: 100%; height: 30px; top: 0; left: 0; height: 20px; position: fixed; background-color: black">
+  <div style=""%>
+    <% if logged_in? %>
+        <a style="color:white; font-size: 12px; left: 0px; margin-left: 10px; float: left">Welcome to Mumbai Guestlist: <%=current_user.name%></a>
+        <%= link_to("Log Out","signout", { :class=>"nav-options" })%>
+    <%else%>
+        <%= link_to 'Log In With Facebook',"/auth/facebook",{ :class=>"nav-options" }%>
+    <% end%>
+  </div>
+
+</nav>
