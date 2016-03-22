@@ -24,6 +24,11 @@ class Admin::UsersController <ApplicationController
 
   end
 
+  def destroy
+    @user.destroy
+    redirect_to admin_users_path
+  end
+
   def update
     if @user.update(user_params)
       flash[:notice] = "User was successfully updated"

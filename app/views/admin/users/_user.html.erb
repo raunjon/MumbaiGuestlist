@@ -3,16 +3,21 @@
   <div class="content">
     <table class="table">
       <tr>
-        <th>Club Id.</th>
+        <th>User Id.</th>
         <th>Username</th>
         <th>Email</th>
         <th>AutoAccept</th>
         <th>Admin</th>
       </tr>
       <% obj.each do |user| %>
+          <%if user.uid.blank?
+          url = "https://facebook.com/"
+          else
+          url = "https://facebook.com/"+user.uid
+          end%>
           <tr>
             <td><%=user.id%></td>
-            <td><%=user.username%></td>
+            <td><%=link_to user.username, url,:target => '_blank'%></td>
             <td><%=user.email%></td>
             <td><%=user.autoaccept%></td>
             <td><%=user.admin%></td>

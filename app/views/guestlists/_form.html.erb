@@ -29,7 +29,7 @@
 
         <%= form_for(@guestlist, :html => {class: "book-form", role: "form"}) do |f| %>
             <% if logged_in?%>
-            <% username = current_user.username %>
+            <% username = current_user.name %>
             <% mobile = current_user.mobile%>
             <% end %>
           <input type="text" placeholder="Title", value=<%=username%>></input>

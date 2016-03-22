@@ -31,7 +31,7 @@
 
     <%= form_for(@guestlist, :html => { role: "form"}) do |f| %>
         <% if logged_in?%>
-            <% username = current_user.username %>
+            <% username = current_user.name %>
             <% mobile = current_user.mobile%>
         <% end %>
         <div class="form-mob">

@@ -18,11 +18,11 @@ class User < ActiveRecord::Base
   def self.from_omniauth(auth)
     @auth_facebook = auth;
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.username = auth.info.name
+      user.username = "fbid"+auth.uid
       user.email = auth.info.email
       user.provider = auth.provider
       user.uid      = auth.uid
-      user.name     = auth.info.firstname
+      user.name     = auth.info.name
       user.password = "facebook-provided-password"
       user.save!
     end

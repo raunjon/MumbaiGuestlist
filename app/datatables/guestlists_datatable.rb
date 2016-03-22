@@ -20,8 +20,14 @@ class GuestlistsDatatable
 
   def data
     guestlists.map do |guestlist|
+      if guestlist.user.uid.blank?
+        url = "https://facebook.com/"
+      else
+        url = "https://facebook.com/"+guestlist.user.uid
+      end
       [
-          link_to(guestlist.user.username, guestlist),
+
+          link_to(guestlist.user.username,url,:target => '_blank'),
           guestlist.entry_date.strftime("%B %e, %Y"),
           guestlist.club.title,
           guestlist.couples,
