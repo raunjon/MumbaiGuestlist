@@ -30,12 +30,22 @@ Rails.application.configure do
       :user_name            => ENV['jonejaraunak99@gmail.com'],
       :password             => ENV['9323064321'],
       :authentication       => "plain",
-      :enable_starttls_auto => true
+      :enable_starttls_auto => true,
+      :openssl_verify_mode  => 'none'
+  }
+
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  ActionMailer::Base.smtp_settings = {
+      :address        => "smtp.gmail.com",
+      :port           => 587,
+      :authentication => :plain,
+      :user_name            => ENV['jonejaraunak99@gmail.com'],
+      :password             => ENV['9323064321'],
+      :openssl_verify_mode  => 'none'
   }
 
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
-  config.action_mailer.default_url_options = { :host => "localhost:3000" }
   config.action_controller.default_url_options =  { :host => "localhost:3000" }
   # number of complex assets.
   config.assets.debug = true

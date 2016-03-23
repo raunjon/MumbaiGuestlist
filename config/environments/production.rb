@@ -30,6 +30,7 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { :host => "mumbaiguestlist.herokuapp.com" }
   config.action_controller.default_url_options =  { :host => "mumbaiguestlist.herokuapp.com" }
 
+
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
 
@@ -47,6 +48,16 @@ Rails.application.configure do
       :authentication       => "plain",
       :enable_starttls_auto => true
   }
+
+  ActionMailer::Base.smtp_settings = {
+      :address        => "smtp.gmail.com",
+      :port           => 587,
+      :authentication => :plain,
+      :user_name            => ENV['jonejaraunak99@gmail.com'],
+      :password             => ENV['9323064321'],
+      :openssl_verify_mode  => 'none'
+  }
+
 
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
