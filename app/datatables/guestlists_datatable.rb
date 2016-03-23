@@ -27,7 +27,7 @@ class GuestlistsDatatable
       end
       [
 
-          link_to(guestlist.user.username,url,:target => '_blank', :only_path=>true),
+          link_to(guestlist.user.name,url,:target => '_blank', :only_path=>true),
           guestlist.entry_date.strftime("%B %e, %Y"),
           guestlist.club.title,
           guestlist.couples,

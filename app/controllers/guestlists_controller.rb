@@ -16,13 +16,31 @@ before_action 'require_user', only: [:create]
     @guestlist = Guestlist.new(guestlist_params)
     @guestlist.user = current_user
       if @guestlist.save
-        flash[:notice] = "Entry made successfully"
         @guestlist.user.update_attribute(:mobile, @guestlist.mobile)
-        redirect_to guestlists_path
+
+        EntryConfirmationMailer.send_email(@guestlist).deliver
+        respond_to do |format|
+            format.html { redirect_to guestlists_path, notice: 'Guestlist entry was successfully made.' }
+            format.json { render :show, status: :created, location: @guestlist.user }
+        end
       else
+        respond_to do |format|
+            format.html { render :new }
+            format.json { render json: @guestlist.user.errors, status: :unprocessable_entity }
+        end
+    #    redirect_to guestlists_path
         render :new
       end
   end
+
+def send_simple_message
+  RestClient.post "https://api:key-20363f23cc857d99c36510c50fd5ed8a"\
+  "@api.mailgun.net/v3/sandbox0b89e4bc8e69432797897d8a0b809b89.mailgun.org/messages",
+                  :from => "Mailgun Sandbox <postmaster@sandbox0b89e4bc8e69432797897d8a0b809b89.mailgun.org>",
+                  :to => "Raunak Joneja <jonejaraunak99@gmail.com>",
+                  :subject => "Hello Raunak Joneja",
+                  :text => "Congratulations Raunak Joneja, you just sent an email with Mailgun!  You are truly awesome!  You can see a record of this email in your logs: https://mailgun.com/cp/log .  You can send up to 300 emails/day from this sandbox server.  Next, you should add your own domain so you can send 10,000 emails/month for free."
+end
 
   private
   def guestlist_params
