@@ -38,24 +38,35 @@ Rails.application.configure do
   # yet still be able to expire them through the digest params.
   config.assets.digest = true
 
-  config.action_mailer.delivery_method = :smtp
-  # SMTP settings for gmail
-  config.action_mailer.smtp_settings = {
-      :address              => "smtp.gmail.com",
-      :port                 => 587,
-      :user_name            => ENV['jonejaraunak99@gmail.com'],
-      :password             => ENV['9323064321'],
-      :authentication       => "plain",
-      :enable_starttls_auto => true
-  }
+  #config.action_mailer.delivery_method = :smtp
+  # # SMTP settings for gmail
+  # config.action_mailer.smtp_settings = {
+  #     :address              => "smtp.gmail.com",
+  #     :port                 => 587,
+  #     :user_name            => ENV['jonejaraunak99@gmail.com'],
+  #     :password             => ENV['9323064321'],
+  #     :authentication       => :plain,
+  #     :enable_starttls_auto => true
+  # }
+  #
+  # ActionMailer::Base.smtp_settings = {
+  #     :address        => "smtp.gmail.com",
+  #     :port           => 587,
+  #     :authentication => :plain,
+  #     :user_name            => ENV['jonejaraunak99@gmail.com'],
+  #     :password             => ENV['9323064321'],
+  #     :openssl_verify_mode  => 'none'
+  # }
 
+  config.action_mailer.delivery_method = :smtp
+  # SMTP settings for mailgun
   ActionMailer::Base.smtp_settings = {
-      :address        => "smtp.gmail.com",
       :port           => 587,
-      :authentication => :plain,
-      :user_name            => ENV['jonejaraunak99@gmail.com'],
-      :password             => ENV['9323064321'],
-      :openssl_verify_mode  => 'none'
+      :address        => "smtp.mailgun.org",
+      :domain         => ENV['sandbox0b89e4bc8e69432797897d8a0b809b89.mailgun.org'],
+      :user_name      => ENV['postmaster@sandbox0b89e4bc8e69432797897d8a0b809b89.mailgun.org'],
+      :password       => ENV['63bd68bc0fa98e427aad1abdf946a8d6'],
+      :authentication => :plain
   }
 
 
