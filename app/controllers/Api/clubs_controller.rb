@@ -1,4 +1,4 @@
-class Api::ClubsController < ApplicationController
+class Api::ClubsController < Api::BaseController
   before_action :set_club, only: [:show]
   def index
     @clubs = Club.first
