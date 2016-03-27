@@ -1,7 +1,8 @@
-class ClubsController < ApplicationController
+class Api::ClubsController < ApplicationController
   before_action :set_club, only: [:show]
   def index
-    @clubs = Club.all
+    @clubs = Club.first
+    render json: @clubs.to_json
   end
 
   def show

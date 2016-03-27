@@ -1,0 +1,8 @@
+<h1 align="center"><%=@user.name%></h1>
+<div align="center">
+  <p>
+    Email: <%=@user.email %><br/>
+    Total entries count: <%=@user.guestlists.count %>
+    <%= render 'admin/guestlists/guestlist', js:admin_user_url(@user, :format => :json)%>
+
+  </p>

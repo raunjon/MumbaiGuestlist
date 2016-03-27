@@ -3,14 +3,15 @@ include Rails.application.routes.url_helpers
 class GuestlistsDatatable
   delegate :params, :link_to, :number_to_currency, to: :@view
 
-  def initialize(view)
+  def initialize(view,glists)
     @view = view
+    @glists = glists
   end
 
   def as_json(options = {})
     {
         sEcho: params[:sEcho].to_i,
-        iTotalRecords: Guestlist.count,
+        iTotalRecords: @glists.count,
         iTotalDisplayRecords: guestlists.total_entries,
         aaData: data
     }
@@ -26,9 +27,9 @@ class GuestlistsDatatable
         url = "https://facebook.com/"+guestlist.user.uid
       end
       [
-
-          link_to(guestlist.user.name,url,:target => '_blank', :only_path=>true),
-          guestlist.entry_date.strftime("%B %e, %Y"),
+          link_to(
+          guestlist.user.name,url,:target => '_blank', :only_path=>true),
+          guestlist.entry_date.strftime('%d-%B-%Y'),
           guestlist.club.title,
           guestlist.couples,
           guestlist.mobile,
@@ -43,12 +44,12 @@ class GuestlistsDatatable
   end
 
   def fetch_guestlists
-    guestlists = Guestlist.order("#{sort_column} #{sort_direction}")
+    guestlists = @glists.order("#{sort_column} #{sort_direction}")
     guestlists = guestlists.page(page).per_page(per_page)
     guestlists = guestlists.joins(:user, :club)
     if params[:sSearch].present?
       #guestlists = guestlists.joins(:user, :club)
-      guestlists = guestlists.where("username like :search or  title like :search or entry_date like :search or mobile like :search or email like :search", search: "%#{params[:sSearch]}%")
+      guestlists = guestlists.where("name like :search or title like :search or entry_date like :search like :search or email like :search", search: "%#{params[:sSearch]}%")
     end
     guestlists
   end

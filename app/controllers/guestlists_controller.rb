@@ -1,5 +1,7 @@
+require 'date'
 class GuestlistsController <ApplicationController
-before_action 'require_user', only: [:create]
+  before_action :set_guestlist, only: [:show]
+  before_action 'require_user', only: [:create]
   def index
     @guestlist = Guestlist.new
   end
@@ -9,27 +11,31 @@ before_action 'require_user', only: [:create]
   end
 
   def show
-    render :new
+    if @guestlist.user != current_user
+      redirect_to(guestlists_path)
+    end
   end
 
   def create
     @guestlist = Guestlist.new(guestlist_params)
+    dateString = @guestlist.entry_date.to_s
+    date = Date.parse(dateString)
+    @guestlist.entry_date = date.strftime('%Y-%m-%d')
     @guestlist.user = current_user
       if @guestlist.save
         @guestlist.user.update_attribute(:mobile, @guestlist.mobile)
-
-        EntryConfirmationMailer.send_email(@guestlist).deliver
-        respond_to do |format|
-            format.html { redirect_to guestlists_path, notice: 'Guestlist entry was successfully made.' }
-            format.json { render :show, status: :created, location: @guestlist.user }
-        end
-      else
-        respond_to do |format|
-            format.html { render :new }
-            format.json { render json: @guestlist.user.errors, status: :unprocessable_entity }
-        end
-    #    redirect_to guestlists_path
-        render :new
+        redirect_to clubs_path
+      #   EntryConfirmationMailer.send_email(@guestlist).deliver
+      #   respond_to do |format|
+      #       format.html { redirect_to guestlist_path(@guestlist), notice: 'Guestlist entry was successfully made.' }
+      #       format.json { render :show, status: :created, location: @guestlist.user }
+      #   end
+      # else
+      #   respond_to do |format|
+      #       format.html { render :new }
+      #       format.json { render json: @guestlist.user.errors, status: :unprocessable_entity }
+      #   end
+      #   render :new
       end
   end
 
@@ -45,5 +51,8 @@ end
   private
   def guestlist_params
     params.require(:guestlist).permit(:club_id, :mobile, :couples, :entry_date)
+  end
+  def set_guestlist
+    @guestlist = Guestlist.find(params[:id])
   end
 end

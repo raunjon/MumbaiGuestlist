@@ -24,6 +24,20 @@ class Admin::UsersController <ApplicationController
 
   end
 
+  def show
+    #users = User.includes(:guestlists);
+    respond_to do |format|
+      format.html
+      glists = @user.guestlists
+      format.json { render json: GuestlistsDatatable.new(view_context,glists) }
+      # if params[:includes]
+      #   format.json {render :json => users,  :include => params[:includes] }
+      # else
+      #format.json {render :json => users}
+      #format.xml {render :xml => users}
+      #end
+    end
+  end
   def destroy
     @user.destroy
     redirect_to admin_users_path

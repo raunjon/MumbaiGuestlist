@@ -1,34 +1,66 @@
+
+<style type="text/css">
+
+</style>
 <div align="center" xmlns="http://www.w3.org/1999/html">
   <!--<p><%= link_to 'Create new guestlist',new_admin_club_path%></p>-->
-
   <div class="content">
     <div>
-      <input type="submit" style="border: none;float: right; height: 20px; width:30px;text-align: center;">Go</input>
-
-      <select name="status" id="status" style="border: none;float: right; height: 20px; text-align: center; margin-right: 20px">
-
-        <option value="" style="font-size:9px;" selected>----Status----</option>
+        <select name="status" id="status" onchange="changeStatus(this.value)">
+        <option value="" style="font-size:9px;" selected>All</option>
         <option value=<%=Status::PENDING%> style="font-size:9px;">Pending</option>
         <option value=<%=Status::ACCEPTED%> style="font-size:9px;">Accepted</option>
         <option value=<%=Status::DECLINED%> style="font-size:9px;">Declined</option>
       </select>
+      <input type="text" data-provide="datepicker" id="datepicker" class="admin-options"/>
+      <input type="button" value="Change" class="admin-options" onclick="changeDate()"/>
+      <%= link_to "Export", current_path('.csv'), class: "admin-options" %>
+      <input type="button" value="Auto Accept" class="admin-options"/>
     </div>
-    <table id="guestlists" class="display" data-source="<%=admin_guestlists_url(format "json")%>">>
+    <table id="guestlists" class="display" data-source=<%=request.original_url%>>
       <thead>
-      <tr>
-        <th>Username</th>
-        <th>Date</th>
-        <th>Club.</th>
-        <th>Couples</th>
-        <th>Mobile</th>
-        <th>Status</th>
-        <th>Options</th>
-
-      </tr>
+        <tr>
+          <th>Username</th>
+          <th>Date</th>
+          <th>Club.</th>
+          <th>Couples</th>
+          <th>Mobile</th>
+          <th>Status</th>
+          <th>Options</th>
+        </tr>
       </thead>
       <tbody>
       </tbody>
-
     </table>
   </div>
 </div>
+
+<script type="application/javascript">
+  $("#status").val(<%=params[:status]%>);
+  function changeStatus(opt){
+    window.location = "<%= admin_guestlists_url%>?status="+opt
+  }
+  function changeDate(){
+    var dateString = document.getElementById('datepicker').value;
+    var date = new Date(dateString);
+    var year = date.getFullYear();
+    var month = (date.getMonth()+1).toString();
+    var day = date.getDate().toString();
+    month = month.length > 1 ? month : '0' + month;
+    day = day.length > 1 ? day : '0' + day;
+    var formatted_date = year+'-'+month+'-'+day;
+    window.location = "<%= admin_guestlists_url%>?date="+formatted_date;
+  }
+  $(function () {
+    $('#datepicker').datepicker({
+      todayHighlight: true
+    });
+  });
+</script>
+
+<script type="text/javascript">
+//  $(function() {
+//    $( "#datepicker" ).datepicker();
+//  });
+
+</script>

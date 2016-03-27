@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-    default_url_options :host => "https://mumbaiguestlist.herokuapp.com"
-
+    #default_url_options :host => "https://mumbaiguestlist.herokuapp.com"
+    default_url_options :host => "http://localhost:3000"
   # You can have the root of your site routed with "root"
   root 'guestlists#index'
   get 'clubs', to: 'clubs#index'
@@ -28,9 +28,22 @@ Rails.application.routes.draw do
 
   end
 
-  namespace :admin do
+  # namespace :api do
+  #     constraints subdomain: 'api' do
+  #       resources :clubs
+  #     end
+  # end
+
+    namespace :api, constraints: { subdomain: 'api' } do
+        resources :clubs
+    end
+
+    namespace :admin do
     resources :clubs
     resources :guestlists
+    get '/guestlists/?status=:status', to: 'guestlists#index', as: "status_params"
+    get '/guestlists/?date=:date', to: 'guestlists#index', as: "date_params"
+
     resources :users
     get '/', to: redirect('admin/clubs#index')
     get 'login', to: 'sessions#new'

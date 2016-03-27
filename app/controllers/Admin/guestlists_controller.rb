@@ -5,7 +5,29 @@ class Admin::GuestlistsController <ApplicationController
    # @guestlists = Guestlist.paginate(page: params[:page],per_page: 20);
     respond_to do |format|
       format.html
-      format.json { render json: GuestlistsDatatable.new(view_context) }
+      if params[:status]
+        if !params[:status].empty?
+           glist_status = params[:status]
+           glists = Guestlist.where(status: glist_status)
+        else
+          glists = Guestlist.all
+        end
+    elsif params[:date]
+      if !params[:date].empty?
+        glist_date = params[:date]
+        glists = Guestlist.where(entry_date: glist_date)
+      else
+        glists = Guestlist.all
+      end
+        else
+        glists = Guestlist.all
+      end
+      format.json { render json: GuestlistsDatatable.new(view_context,glists) }
+      glists.includes(:user)
+      @glists = glists;
+      format.csv { send_data @glists.to_csv }
+      #format.xls { }
+
     end
   end
 
@@ -21,7 +43,7 @@ class Admin::GuestlistsController <ApplicationController
     render :index
   end
 
-  def update
+  def update  
     if (@guestlist.update(params.permit(:status)))
       flash[:notice] = "Guestlist was successfully updated"
       if params[:status]==Status::ACCEPTED

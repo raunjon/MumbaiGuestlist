@@ -11,12 +11,13 @@ ul#nav li a { color:#ccc; display:block; padding:12px; font-size:0.9em; border-b
 ul#nav li a:hover {background-color:#030303; color:#fff; padding-left:30px;}
 ul#nav li a:selected {background-color:#030303; color:#fff;}
 a {text-decoration:none;  color: #000000;;}
-.logo {float:left; margin-top:4px;}
-.logo a {font-size:1.6em; color:#fff;}
-.logout { float: right; margin-top: 4px;}
-.logout a {font-size:1.2em; color:#fff;}
-.sidebar{ width:250px; height:100%; background-color:#171717; float:left; }
-.content{ width:100%; margin-left:0%; height:100%; background-color:#fff; padding-left:0px; align-content: center;}
+.logo {position:absolute; left:50px; top:50px; width:auto; height:auto; z-index:100;}
+.logo img {display: block;  max-width:240px; max-height: 110px;  width: auto;  height: auto;}
+.logo a { font-size:1.6em; color:#fff; }
+.logout { float: right; margin-top: 4px; }
+.logout a {font-size:1.2em; color:#fff; }
+.sidebar { width:250px; height:100%; background-color:#171717; float:left; }
+.content { width:100%; margin-left:0%; height:100%; background-color:#fff; padding-left:0px; align-content: center;}
 .content .table table {width:100%; border-collapse:collapse;}
 .content .table table a {color:#00F;}
 .content .table table thead th { font-weight:bold; font-size:15px; border-bottom: 1px solid #ddd; padding-bottom:10px;}
@@ -32,7 +33,7 @@ a {text-decoration:none;  color: #000000;;}
 .content .form form {margin: 0 auto;  width:50%;}
 .content .form input{ margin: 0 auto; width: 50%; padding:6px; font-size:13px; }
 .footer	{  position:fixed;  left:0px;  bottom:0px;  width: 100%;  margin-left:20px;  margin-right:40px;  padding-top:10px;  padding-bottom:10px;  border-top: 1px solid #EAEAEA;  color: #ffffff;  }
-.footer a {color: #fffff}
+.footer a {color: #ffffff}
 .footer a hover	{  color: #fff;  }
 .footer small	{  float:left; color: #ffffff }
 .footer ul {  float:right;  list-style:none;  }
@@ -44,6 +45,10 @@ a {text-decoration:none;  color: #000000;;}
 .book-form input,input[type=submit]{ border:5px solid #575a59; height:50px; width:180px; font-size:16px; text-align:center; outline:none; margin-right:-10px; &:focus { border-color: darken(#575a59, 10%); } }
 .select-custom{ border:5px solid #575a59; height:50px; width:180px; font-size:16px; text-align:center; outline:none; margin-right:-10px; &:focus { border-color: darken(#575a59, 10%); } }
 .nav-options {float: right; color: white; margin-right: 10px; font-size: 12px;}
+.admin-options{float: left; margin-left: 10px;}
+#datepicker {border: 1px solid #393939; float: left; height: 20px; width: 100px; text-align: left;}
+#status {border: solid 1px #393939; float: right; height: 20px; text-align: center; margin-right: 20px; margin-bottom: 20px; }
+
 //mobile
 
 .bg1 { height:100%; }

@@ -1,7 +1,7 @@
-<h1 align="center">Showing selected club</h1>
+<h1 align="center"><%=@club.title %></h1>
 <div align="center">
   <p>
-    Title: <%=@club.title %>
-    <%= render 'admin/guestlists/guestlist', obj:@club.guestlists%>
+    Total entries count: <%=@club.guestlists.count %>
+    <%= render 'admin/guestlists/guestlist', js:admin_club_url(@club, :format => :json)%>
 
   </p>

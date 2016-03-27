@@ -1,0 +1,29 @@
+<div class="container-home">
+  <div style="width:1000px; height:650px; position:relative; margin:100px auto 0 auto;">
+    <div style="width:1000px; height:561px; position:relative; float:left; background-color:#fff; opacity:0.8;">
+      <div style="position:relative; float:left; width:950px; height:100%; color:#575a59; line-height:22px; padding:20px 0 0 15px; z-index:999;">
+        <p style="font-family:'BlairMdITC TT'; font-size:26px;">BOOKING RECEIVED</p>
+        (Please note this booking is NOT yet confirmed)	</br></br>
+        We have successfully received your booking enquiry & we will work with the requested club to confirm your booking.</br>
+        </br>	You will receive a confirmation of this enquiry via text / email shortly
+        </br>	THANK YOU FOR BOOKING WITH MUMBAIGUESTLIST.COM
+        <hr style="width:100px; margin-left:-15px;">
+        <p style="padding-bottom:5px; padding-top:0px;"><b><u>Booking Details:</u></b></p>
+        <p style="padding-bottom:5px; padding-top:0px;">
+        <b>Name - </b><%=guestlist.user.name%></p>
+        <p style="padding-bottom:5px; padding-top:5px;">
+        <b>Phone No.- </b><%=guestlist.mobile%>
+        <p style="padding-bottom:5px; padding-top:5px;">
+        <b>Email Address - </b><%=guestlist.user.email%>
+        <p style="padding-bottom:5px; padding-top:5px;">
+        <b>Name of Guestist - </b>Mumbai Guestlist</p>
+        <p style="padding-bottom:5px; padding-top:5px;">
+        <b>No. of couples - </b><%=guestlist.couples%></p>
+        <p style="padding-bottom:5px; padding-top:5px;">
+        <b>Club - </b><%=guestlist.club.title%></p>
+        <p style="padding-bottom:5px; padding-top:5px;">
+        <b>Date - </b><%=guestlist.entry_date.strftime('%d-%B-%Y')%> </p>
+      </div>
+    </div>
+  </div>
+</div>

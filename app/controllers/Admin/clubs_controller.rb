@@ -3,6 +3,10 @@ class Admin::ClubsController < ApplicationController
   before_action :require_admin_user
   def index
     @clubs = Club.all
+    respond_to do |format|
+      format.html
+      format.json { render json: @clubs }
+    end
   end
 
   def new
@@ -24,7 +28,11 @@ class Admin::ClubsController < ApplicationController
   end
 
   def show
-
+    respond_to do |format|
+      format.html
+      glists = @club.guestlists
+      format.json { render json: GuestlistsDatatable.new(view_context,glists) }
+    end
   end
 
   def update

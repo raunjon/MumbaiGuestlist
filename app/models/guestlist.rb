@@ -7,4 +7,24 @@ class Guestlist < ActiveRecord::Base
   validates :mobile, presence: true, length: { minimum: 10, maximum: 10}
   validates :club_id, presence: true
 
+  def get_status(status)
+    if status==Status::PENDING
+      "Pending"
+    elsif status==Status::ACCEPTED
+      "Accepted"
+    elsif status==Status::DECLINED
+      "Declined"
+    end
+  end
+
+  def self.to_csv(options = {})
+    CSV.generate(options) do |csv|
+      csv << ["ID","FacebookID","Username","Entry Date", "Club", "Couples","Mobile", "Status"]
+      all.each do |guestlist|
+        csv << [guestlist.id,guestlist.user.uid,guestlist.user.name,guestlist.entry_date,guestlist.club.title,guestlist.couples,guestlist.mobile,guestlist.status]
+      end
+    end
+  end
+
+
 end
