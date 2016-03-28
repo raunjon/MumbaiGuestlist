@@ -1,7 +1,7 @@
 class Api::BaseController < ApplicationController
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
-  protect_from_forgery with: :null_session
+  #protect_from_forgery with: :null_session
   include Status
   helper_method :current_user, :logged_in?, :is_current_user_admin?, :auth_facebook, :get_status, :mobile?, :guestlists_all, :current_path
   def current_user

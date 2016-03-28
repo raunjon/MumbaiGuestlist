@@ -7,6 +7,7 @@ gem 'rails', '4.2.5'
 # Use SCSS for stylesheets
 gem 'bootstrap-sass', '~> 3.3.6'
 #gem 'jquery-datatables-rails', '~> 3.3.0'
+gem 'httparty'  # Makes http fun again (http client)
 
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -30,6 +31,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap-will_paginate', '0.0.10'
 gem 'bootstrap-datepicker-rails'
 gem 'omniauth-facebook', '~> 1.4.1'
+gem 'omniauth-facebook-access-token'
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.14.30'
 gem 'figaro'

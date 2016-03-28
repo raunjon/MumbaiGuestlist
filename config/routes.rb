@@ -11,31 +11,26 @@ Rails.application.routes.draw do
  # post 'login', to: "auth/facebook"
   delete 'logout', to: 'sessions#destroy'
 
-    get 'auth/:provider/callback', to: 'sessions#create'
+    get 'api/auth/:provider/callback', to: 'sessions#create'
     get 'auth/failure', to: redirect('/')
     get 'signout', to: 'sessions#destroy', as: 'signout'
+    get 'loginUser', to: 'sessions#index'
 
     resources :sessions, only: [:create, :destroy]
     resource :home, only: [:show]
 
-   # root to: "guestlists#new"
-
   resources :guestlists
-  scope '/admin' do
-    # root 'clubs#index'
-    # resources :clubs
-    #  get 'users', to: 'users#index'
 
-  end
+  # , constraints: { subdomain: 'api' }
 
-  # namespace :api do
-  #     constraints subdomain: 'api' do
-  #       resources :clubs
-  #     end
-  # end
-
-    namespace :api, constraints: { subdomain: 'api' } do
-        resources :clubs
+    namespace :api, :defaults => {:format => :json} do
+      resources :clubs
+      resources :guestlists
+      get 'loginUser', to: 'sessions#index'
+      get 'signout', to: 'sessions#destroy', as: 'signout'
+      post 'auth/:provider/callback', to: 'sessions#create'
+      post 'auth/failure', to: redirect('/')
+      delete 'signout', to: 'sessions#destroy'
     end
 
     namespace :admin do
@@ -49,10 +44,6 @@ Rails.application.routes.draw do
     get 'login', to: 'sessions#new'
     post 'login', to: 'sessions#create'
     delete 'logout', to: 'sessions#destroy'
-  # get 'users', to: 'users#index'
-  # get 'login', to: 'sessions#new'
-  # post 'login', to: 'sessions#create'
-  # delete 'logout', to: 'sessions#destroy'
 end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -16,7 +16,6 @@ class User < ActiveRecord::Base
   #   end
   # end
   def self.from_omniauth(auth)
-    @auth_facebook = auth;
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.username = "fbid"+auth.uid
       user.email = auth.info.email
