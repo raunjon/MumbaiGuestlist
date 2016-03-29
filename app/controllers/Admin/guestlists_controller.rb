@@ -24,8 +24,9 @@ class Admin::GuestlistsController <ApplicationController
       end
       format.json { render json: GuestlistsDatatable.new(view_context,glists) }
       glists.includes(:user)
-      @glists = glists;
-      format.csv { send_data @glists.to_csv }
+      @guestlists = glists;
+      format.xls {render :xls => @guestlists, :includes => :club}
+      #format.csv { send_data @glists.to_csv }
       #format.xls { }
 
     end

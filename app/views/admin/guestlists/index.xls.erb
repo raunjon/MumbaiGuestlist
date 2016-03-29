@@ -18,7 +18,7 @@
       <% @guestlists.each do |guestlist| %>
           <Row>
             <Cell><Data ss:Type="Number"><%= guestlist.id %></Data></Cell>
-            <Cell><Data ss:Type="String"><%= guestlist.user.name %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= User.find(guestlist.user_id).name %></Data></Cell>
             <Cell><Data ss:Type="String"><%= guestlist.entry_date %></Data></Cell>
             <Cell><Data ss:Type="Number"><%= guestlist.club.title %></Data></Cell>
             <Cell><Data ss:Type="Number"><%= guestlist.couples %></Data></Cell>

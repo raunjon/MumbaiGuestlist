@@ -24,8 +24,7 @@ class Api::BaseController < ApplicationController
   end
   def require_user
     if !logged_in?
-      flash[:danger] = "Please login to continue";
-      redirect_to "/auth/facebook"
+      render :json => {response: "Please login to continute"},:status => :unauthorized
     end
   end
   def require_admin_user
