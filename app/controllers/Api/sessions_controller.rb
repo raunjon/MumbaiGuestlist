@@ -5,9 +5,16 @@ class Api::SessionsController < Api::BaseController
 
   def index
     user = current_user
-    user
     if logged_in?
-      render :json => user, :except =>[:password_digest]
+      if params[:includes]
+        if !params[:includes].empty?
+          render :json => user, :include => :guestlists, :except =>[:password_digest]
+        else
+          render :json => user, :except =>[:password_digest]
+        end
+      else
+        render :json => user, :except =>[:password_digest]
+      end
     else
       render :json => {response: "Please login to continute"},:status => :unauthorized
     end
