@@ -8,7 +8,7 @@ class Api::SessionsController < Api::BaseController
     if logged_in?
       if params[:includes]
         if !params[:includes].empty?
-          render :json => user, :include => :guestlists, :except =>[:password_digest]
+          render :json => user, :include => :guestlists,  :except =>[:password_digest]
         else
           render :json => user, :except =>[:password_digest]
         end

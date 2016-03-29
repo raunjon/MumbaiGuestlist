@@ -28,6 +28,7 @@ Rails.application.routes.draw do
       resources :guestlists
       get 'loginUser', to: 'sessions#index'
       get 'signout', to: 'sessions#destroy', as: 'signout'
+      post 'guestlists/new', to: 'guestlists#create'
       post 'auth/:provider/callback', to: 'sessions#create'
       post 'auth/failure', to: redirect('/')
       delete 'signout', to: 'sessions#destroy'

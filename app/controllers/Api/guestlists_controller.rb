@@ -3,17 +3,20 @@ class Api::GuestlistsController < Api::BaseController
   before_action :set_guestlist, only: [:show]
   before_action 'require_user', only: [:create]
   def index
-    @guestlist = Guestlist.new
+  #  @guestlist = Guestlist.new
+    @guestlists = Guestlist.where(user: current_user)
+    @guestlists.joins(:clubs)
+    render :json => @guestlists, :include => (:club)
   end
 
   def new
-    @guestlist = Guestlist.new
+    
   end
 
   def show
-    if @guestlist.user != current_user
-      redirect_to(guestlists_path)
-    end
+    # if @guestlist.user != current_user
+    #   redirect_to(guestlists_path)
+    # end
   end
 
   def create
