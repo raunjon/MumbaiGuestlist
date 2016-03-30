@@ -1,6 +1,10 @@
 <div style="background-color: black; height:100%; width: 100%">
   <% if mobile?%>
-    <%= render 'formmob' %>
+      <% if logged_in?%>
+        <%= render 'formmob' %>
+      <%else%>
+        <%= render 'authfacebookmob'%>
+      <%end%>
   <%else%>
       <%= render 'form' %>
   <%end%>

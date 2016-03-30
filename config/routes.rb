@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'guestlists#index'
   get 'clubs', to: 'clubs#index'
-  get '/mgl', to: redirect('/clubs#index')
+  get '/mgl', to: redirect('/guestlists#index')
   # get 'login', to: "/auth/facebook"
  # post 'login', to: "auth/facebook"
   delete 'logout', to: 'sessions#destroy'

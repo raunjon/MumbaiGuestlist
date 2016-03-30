@@ -10,12 +10,14 @@
 <% if is_namespace_admin? %>
   <%= render 'layouts/navigation'%>
 <% else %>
+    <% if !mobile? %>
   <%= render 'layouts/clientnav'%>
+    <% end %>
 <% end %>
 <%= render 'layouts/messages'%>
 <div class="container">
   <%= yield %>
-    <% if !is_namespace_admin? %>
+    <% if !is_namespace_admin? && !mobile?%>
         <div class="logo"><%= image_tag("logo.png") %></div>
     <%end%>
 </div>

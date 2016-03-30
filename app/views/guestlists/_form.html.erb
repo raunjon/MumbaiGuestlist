@@ -34,7 +34,11 @@
             <% mobile = current_user.mobile%>
             <% end %>
           <input type="text" placeholder="Title", value=<%=username%>></input>
-          <%= f.collection_select :club_id, Club.order(:title),:id,:title, include_blank: false, :style => "border:5px solid #575a59; height:50px; width:180px; font-size:16px; text-align:center; outline:none; margin-right:-10px; &:focus { border-color: darken(#575a59, 10%); }" %>
+            <select name=<%=:club_id%> class="select-club">
+            <% Club.all.each do  |c|%>
+            <option value=<%=c.id%> selected="selected"><%=c.title%></option>
+             <%end%>
+            </select>
           <%= f.text_field :entry_date, :id => 'datetimepicker', placeholder:"Date",autofocus:false, :readonly => true %>
           <%= f.text_field :couples, class:"",placeholder:"Couples",autofocus:true %>
           <%= f.text_field :mobile, class:"",placeholder:"Mobile",autofocus:true, :value=>mobile %>
