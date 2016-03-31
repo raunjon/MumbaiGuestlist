@@ -7,7 +7,7 @@
         <%end%>
         <%= link_to("Log Out","signout", { :class=>"nav-options" })%>
   <%else%>
-        <%= link_to 'Log In With Facebook',"/auth/facebook",{ :class=>"nav-options" }%>
+        <%= link_to 'Log In With Facebook',"api/auth/facebook",{ :class=>"nav-options" }%>
     <% end%>
   </div>
 
