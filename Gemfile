@@ -45,6 +45,8 @@ gem 'figaro'
   gem 'jquery-datatables-rails' ,  github: 'rweng/jquery-datatables-rails'
   gem 'jquery-ui-rails'
 gem 'kaminari'
+gem 'rename'
+
 gem 'will_paginate'
 group :development, :test do
   gem 'sqlite3'

@@ -189,6 +189,7 @@
     <orderEntry type="library" scope="PROVIDED" name="rake (v11.1.1, rbenv: 2.2.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rdoc (v4.2.2, rbenv: 2.2.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="remotipart (v1.2.1, rbenv: 2.2.1) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rename (v1.0.2, rbenv: 2.2.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="safe_yaml (v1.0.4, rbenv: 2.2.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sass (v3.4.21, rbenv: 2.2.1) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sass-rails (v5.0.4, rbenv: 2.2.1) [gem]" level="application" />
