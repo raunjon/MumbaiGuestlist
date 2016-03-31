@@ -34,7 +34,7 @@
             <% mobile = current_user.mobile%>
             <% end %>
           <input type="text" placeholder="Title", value=<%=username%>></input>
-            <select name=<%=:club_id%> class="select-club">
+            <select  class="select-club" name=<%=:club_id%>>
             <% Club.all.each do  |c|%>
             <option value=<%=c.id%> selected="selected"><%=c.title%></option>
              <%end%>

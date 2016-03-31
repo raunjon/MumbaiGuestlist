@@ -20,11 +20,16 @@ class GuestlistsController <ApplicationController
     @guestlist = Guestlist.new(guestlist_params)
     dateString = @guestlist.entry_date.to_s
     date = Date.parse(dateString)
+    club_id = params.require(:club_id)
+    club = Club.find(club_id)
+    @guestlist.club = club
     @guestlist.entry_date = date.strftime('%Y-%m-%d')
     @guestlist.user = current_user
       if @guestlist.save
         @guestlist.user.update_attribute(:mobile, @guestlist.mobile)
-        redirect_to clubs_path
+        redirect_to guestlist_path(@guestlist)
+      else
+        redirect_to guestlists_path
       #   EntryConfirmationMailer.send_email(@guestlist).deliver
       #   respond_to do |format|
       #       format.html { redirect_to guestlist_path(@guestlist), notice: 'Guestlist entry was successfully made.' }

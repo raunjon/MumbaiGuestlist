@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     #default_url_options :host => "https://mumbaiguestlist.herokuapp.com"
     default_url_options :host => "http://localhost:3000"
   # You can have the root of your site routed with "root"
+
   root 'guestlists#index'
   get 'clubs', to: 'clubs#index'
   get '/mgl', to: redirect('/guestlists#index')
@@ -35,11 +36,12 @@ Rails.application.routes.draw do
     end
 
     namespace :admin do
+    mount RailsAdmin::Engine => '/database', as: 'rails_admin'
     resources :clubs
     resources :guestlists
     get '/guestlists/?status=:status', to: 'guestlists#index', as: "status_params"
     get '/guestlists/?date=:date', to: 'guestlists#index', as: "date_params"
-
+    put '/guestlists', to: 'guestlists#edit'
     resources :users
     get '/', to: redirect('admin/clubs#index')
     get 'login', to: 'sessions#new'

@@ -6,7 +6,8 @@
   <!--<p><%= link_to 'Create new guestlist',new_admin_club_path%></p>-->
   <div class="content">
     <div>
-        <select name="status" id="status" onchange="changeStatus(this.value)">
+      <p style="float:right">search for name, email, mobile & club</p>
+      <select name="status" id="status" onchange="changeStatus(this.value)">
         <option value="" style="font-size:9px;" selected>All</option>
         <option value=<%=Status::PENDING%> style="font-size:9px;">Pending</option>
         <option value=<%=Status::ACCEPTED%> style="font-size:9px;">Accepted</option>
@@ -15,6 +16,8 @@
       <input type="text" data-provide="datepicker" id="datepicker" class="admin-options"/>
       <input type="button" value="Change" class="admin-options" onclick="changeDate()"/>
       <%= link_to "Export", current_path('.csv'), class: "admin-options" %>
+      <%= link_to "Accept All", admin_guestlists_path+'?autoaccept=1', :method => :put, class: "admin-options" %>
+
       <input type="button" value="Auto Accept" class="admin-options"/>
     </div>
     <table id="guestlists" class="display" data-source=<%=request.original_url%>>

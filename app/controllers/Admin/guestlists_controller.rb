@@ -25,7 +25,7 @@ class Admin::GuestlistsController <ApplicationController
       format.json { render json: GuestlistsDatatable.new(view_context,glists) }
       glists.includes(:user)
       @guestlists = glists;
-      format.xls {render :xls => @guestlists, :includes => :club}
+      format.xls {render :xls => glists, :includes => :club}
       #format.csv { send_data @glists.to_csv }
       #format.xls { }
 
@@ -41,11 +41,17 @@ class Admin::GuestlistsController <ApplicationController
   end
 
   def edit
-    render :index
+    Guestlist.all.each do |g|
+      if g.user.autoaccept==true && g.entry_date > Date.today && g.status==0
+        g.update_attribute(:status, 1)
+      end
+    end
+    redirect_to admin_guestlists_path
   end
 
-  def update  
-    if (@guestlist.update(params.permit(:status)))
+  def update
+    if !params.permit(:status).nil?
+    if @guestlist.update(params.permit(:status))
       flash[:notice] = "Guestlist was successfully updated"
       if params[:status]==Status::ACCEPTED
         @guestlist.user.autoaccept = true
@@ -57,6 +63,10 @@ class Admin::GuestlistsController <ApplicationController
       end
       redirect_to admin_guestlists_path
     else
+      redirect_to admin_clubs_path
+    end
+    elsif !params['autoaccept'].nil?
+      Guestlist.where(user.autoaccept => true).update_all(:status=>1)
       redirect_to admin_clubs_path
     end
   end
