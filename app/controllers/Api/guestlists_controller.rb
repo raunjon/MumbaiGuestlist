@@ -24,7 +24,7 @@ class Api::GuestlistsController < Api::BaseController
     dateString = @guestlist.entry_date.to_s
     date = Date.parse(dateString)
     @guestlist.entry_date = date.strftime('%Y-%m-%d')
-    @guestlist.source = 1
+    @guestlist.source = 2
     @guestlist.user = current_user
       if @guestlist.save
         @guestlist.user.update_attribute(:mobile, @guestlist.mobile)

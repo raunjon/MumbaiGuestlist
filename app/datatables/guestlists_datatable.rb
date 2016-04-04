@@ -34,6 +34,7 @@ class GuestlistsDatatable
           guestlist.couples,
           guestlist.mobile,
           get_status(guestlist.status),
+          get_source(guestlist.source),
           link_to("Accept", admin_guestlist_path(guestlist, :status => Status::ACCEPTED, :autoaccept => true), :method => :put) + " " + link_to("Decline", admin_guestlist_path(guestlist, :status => Status::DECLINED), :method => :put) + " " + link_to("Delete",admin_guestlist_path(guestlist),method: :delete, data: {confirm: 'Are you sure?'})
       ]
     end
@@ -78,6 +79,19 @@ class GuestlistsDatatable
       "Accepted"
     elsif status==Status::DECLINED
       "Declined"
+    end
+  end
+
+  def get_source(source)
+    if source==0
+      "Web"
+    elsif source==1
+      "Android"
+    elsif source==2
+      "iOS"
+    else
+      "Undefined
+"
     end
   end
 end

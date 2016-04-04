@@ -25,7 +25,9 @@ class GuestlistsController <ApplicationController
     @guestlist.club = club
     @guestlist.entry_date = date.strftime('%Y-%m-%d')
     if mobile?
-      @guestlist.source = 2
+      @guestlist.source = 1
+    else
+      @guestlist.source = 0
     end
     @guestlist.user = current_user
       if @guestlist.save
