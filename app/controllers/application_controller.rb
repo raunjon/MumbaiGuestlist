@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 #  protect_from_forgery with: :null_session
   include ::ActionController::Cookies
   include Status
-  helper_method :current_user, :logged_in?, :is_current_user_admin?, :auth_facebook, :get_status, :mobile?, :guestlists_all, :current_path
+  helper_method :current_user, :logged_in?, :is_current_user_admin?, :auth_facebook, :get_status, :get_source, :mobile?, :guestlists_all, :current_path
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
@@ -44,6 +44,16 @@ class ApplicationController < ActionController::Base
       "Accepted"
     elsif status==Status::DECLINED
       "Declined"
+    end
+  end
+
+  def get_source(source)
+    if source==0
+      "Web"
+    elsif source==1
+      "Android"
+    elsif source==2
+      "iOS"
     end
   end
 
