@@ -49,7 +49,7 @@ class GuestlistsDatatable
     guestlists = guestlists.joins(:user, :club)
     if params[:sSearch].present?
       #guestlists = guestlists.joins(:user, :club)
-      guestlists = guestlists.where("name like :search or title like :search or email like :search or guestlists.mobile like :search", search: "%#{params[:sSearch]}%")
+      guestlists = guestlists.where("LOWER(name) like LOWER(:search) or LOWER(title) like LOWER(:search) or LOWER(email) like LOWER(:search) or guestlists.mobile like :search", search: "%#{params[:sSearch]}%")
     end
     guestlists
   end
