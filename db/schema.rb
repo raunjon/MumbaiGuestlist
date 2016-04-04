@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160404111822) do
+ActiveRecord::Schema.define(version: 20160404150111) do
 
   create_table "clubs", force: :cascade do |t|
     t.string "title"
@@ -43,15 +43,17 @@ ActiveRecord::Schema.define(version: 20160404111822) do
     t.string  "email"
     t.string  "username"
     t.string  "password_digest"
-    t.boolean "admin",           default: false
+    t.boolean "admin",               default: false
     t.string  "provider"
     t.string  "uid"
     t.string  "name"
-    t.boolean "autoaccept",      default: false
+    t.boolean "autoaccept",          default: false
     t.string  "mobile"
     t.string  "gender"
     t.string  "push_id"
-    t.integer "source",          default: 0
+    t.integer "source",              default: 0
+    t.date    "birthdate"
+    t.string  "relationship_status"
   end
 
 end

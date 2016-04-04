@@ -29,7 +29,8 @@ class Api::SessionsController < Api::BaseController
         :domain => 'http://localhost:3000',
         :httponly => false
     }
-    render :json => user, :except =>[:password_digest]
+    render :json => request.env["omniauth.auth"]
+    #render :json => user, :except =>[:password_digest]
   end
 
   def destroy
