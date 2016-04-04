@@ -21,7 +21,7 @@ class Api::SessionsController < Api::BaseController
   end
 
   def create
-    user = User.from_omniauth(request.env["omniauth.auth"])
+    user = User.from_omniauth(request.env["omniauth.auth"],2)
     request.session[:user_id] = user.id
     request.cookies[:user_id] = {
         :value => user.id,

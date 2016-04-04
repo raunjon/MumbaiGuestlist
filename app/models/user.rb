@@ -15,11 +15,12 @@ class User < ActiveRecord::Base
   #     user.save!
   #   end
   # end
-  def self.from_omniauth(auth)
+  def self.from_omniauth(auth,source)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.username = "fbid"+auth.uid
       user.email = auth.info.email
       user.gender = auth.extra.gender
+      user.source = source
       user.provider = auth.provider
       user.uid      = auth.uid
       user.name     = auth.info.name

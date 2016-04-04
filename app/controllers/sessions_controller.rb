@@ -16,7 +16,12 @@ class SessionsController <ApplicationController
   end
 
   def create
-    user = User.from_omniauth(request.env["omniauth.auth"])
+    if mobile?
+      source = 1
+    else
+      source = 2
+    end
+    user = User.from_omniauth(request.env["omniauth.auth"],source)
     session[:user_id] = user.id
     redirect_to guestlists_path
     #render :json => user
