@@ -1,5 +1,6 @@
 class RemoveSource < ActiveRecord::Migration
   def change
-    change_column :guestlists, :source, :integer
+    remove_column :guestlists, :source
+    add_column :guestlists, :source, :integer, default: 0
   end
 end
