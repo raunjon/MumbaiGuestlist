@@ -16,10 +16,9 @@ class SessionsController <ApplicationController
   end
 
   def create
+    source = 0
     if mobile?
       source = 1
-    else
-      source = 2
     end
     user = User.from_omniauth(request.env["omniauth.auth"],source)
     session[:user_id] = user.id

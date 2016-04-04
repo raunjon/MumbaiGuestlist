@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
       user.username = "fbid"+auth.uid
       user.email = auth.info.email
       user.gender = auth.extra.gender
-      user.source = source
+      user.source = 0
       user.provider = auth.provider
       user.uid      = auth.uid
       user.name     = auth.info.name
