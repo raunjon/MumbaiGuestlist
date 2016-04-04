@@ -32,6 +32,7 @@ class Admin::ClubsController < ApplicationController
       format.html
       glists = @club.guestlists
       format.json { render json: GuestlistsDatatable.new(view_context,glists) }
+      format.xls {render :xls => glists}
     end
   end
 
