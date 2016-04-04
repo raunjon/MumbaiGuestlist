@@ -19,9 +19,11 @@ class User < ActiveRecord::Base
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.username = "fbid"+auth.uid
       user.email = auth.info.email
+      user.gender = auth.extra.gender
       user.provider = auth.provider
       user.uid      = auth.uid
       user.name     = auth.info.name
+      user.push_id = user.username
       user.password = "facebook-provided-password"
       user.save!
     end

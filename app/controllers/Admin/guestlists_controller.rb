@@ -61,7 +61,9 @@ class Admin::GuestlistsController <ApplicationController
         flash[:notice] = "User was not successfully updated"
          end
       end
-      redirect_to admin_guestlists_path
+      Sms.send_sms(@guestlist)
+     redirect_to admin_guestlists_path
+
     else
       redirect_to admin_clubs_path
     end

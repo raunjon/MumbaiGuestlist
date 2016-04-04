@@ -24,9 +24,13 @@ class GuestlistsController <ApplicationController
     club = Club.find(club_id)
     @guestlist.club = club
     @guestlist.entry_date = date.strftime('%Y-%m-%d')
+    if mobile?
+      @guestlist.source = 2
+    end
     @guestlist.user = current_user
       if @guestlist.save
         @guestlist.user.update_attribute(:mobile, @guestlist.mobile)
+        Sms.send_sms(@guestlist)
         redirect_to guestlist_path(@guestlist)
       else
         redirect_to guestlists_path

@@ -15,10 +15,8 @@
       </select>
       <input type="text" data-provide="datepicker" id="datepicker" class="admin-options"/>
       <input type="button" value="Change" class="admin-options" onclick="changeDate()"/>
-      <%= link_to "Export", current_path('.csv'), class: "admin-options" %>
-      <%= link_to "Accept All", admin_guestlists_path+'?autoaccept=1', :method => :put, class: "admin-options" %>
-
-      <input type="button" value="Auto Accept" class="admin-options"/>
+      <%= link_to "Export", current_path('.xls'), class: "admin-options" %>
+      <%= link_to "Auto Accept", admin_guestlists_path+'?autoaccept=1', :method => :put, class: "admin-options" %>
     </div>
     <table id="guestlists" class="display" data-source=<%=request.original_url%>>
       <thead>

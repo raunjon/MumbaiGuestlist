@@ -5,6 +5,7 @@
       <tr>
         <th>User Id.</th>
         <th>Username</th>
+        <th>Gender</th>
         <th>Email</th>
         <th>AutoAccept</th>
         <th>Admin</th>
@@ -17,7 +18,8 @@
           end%>
           <tr>
             <td><%=user.id%></td>
-            <td><%=link_to user.username, url,:target => '_blank'%></td>
+            <td><%=link_to user.name, url,:target => '_blank'%></td>
+            <td><%=user.gender%></td>
             <td><%=user.email%></td>
             <td><%=user.autoaccept%></td>
             <td><%=user.admin%></td>
