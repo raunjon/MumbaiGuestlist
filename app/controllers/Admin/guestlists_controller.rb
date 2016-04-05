@@ -77,7 +77,15 @@ class Admin::GuestlistsController <ApplicationController
       redirect_to admin_clubs_path
     end
     elsif !params['autoaccept'].nil?
-      Guestlist.where(user.autoaccept => true).update_all(:status=>1)
+   #   Guestlist.where(user.autoaccept => true).update_all(:status=>1)
+      Guestlist.all.each do |g|
+        if g.user.autoaccept==true && g.status == 0
+          Sms.send_sms(g)
+          if !g.user.push_id.nil?
+            Sms.send_push(g.user.push_id)
+          end
+        end
+      end
       redirect_to admin_clubs_path
     end
   end
