@@ -49,11 +49,13 @@ class Admin::GuestlistsController <ApplicationController
     if !params[:autoaccept].empty?
       @guestlists = Guestlist.includes(:user)
       @guestlists.each do |g|
-        if g.user.autoaccept==true && g.entry_date > Date.today && g.status==0
-          g.update_attribute(:status, 1)
-          Sms.send_sms(g)
-          if !g.user.push_id.nil?
-            Sms.send_push(g.user.push_id)
+        if !g.user.nil?
+          if g.user.autoaccept==true && g.entry_date > Date.today && g.status==0
+            g.update_attribute(:status, 1)
+            Sms.send_sms(g)
+           if !g.user.push_id.nil?
+             Sms.send_push(g.user.push_id)
+           end
           end
         end
       end
