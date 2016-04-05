@@ -46,11 +46,7 @@ class Admin::GuestlistsController <ApplicationController
   end
 
   def edit
-    Guestlist.all.each do |g|
-      if g.user.autoaccept==true && g.entry_date > Date.today && g.status==0
-        g.update_attribute(:status, 1)
-      end
-    end
+
     redirect_to admin_guestlists_path
   end
 
@@ -79,7 +75,8 @@ class Admin::GuestlistsController <ApplicationController
     elsif !params['autoaccept'].nil?
    #   Guestlist.where(user.autoaccept => true).update_all(:status=>1)
       Guestlist.all.each do |g|
-        if g.user.autoaccept==true && g.status == 0
+        if User.find(g.user_id).autoaccept==true && g.entry_date > Date.today && g.status==0
+          g.update_attribute(:status, 1)
           Sms.send_sms(g)
           if !g.user.push_id.nil?
             Sms.send_push(g.user.push_id)
