@@ -62,7 +62,9 @@ class Admin::GuestlistsController <ApplicationController
          end
       end
       Sms.send_sms(@guestlist)
-     redirect_to admin_guestlists_path
+      Sms.send_push(@guestlist.user.push_id)
+      redirect_to admin_guestlists_path
+      #render :json =>  Sms.send_push(@guestlist.user.username,"wf")
 
     else
       redirect_to admin_clubs_path
