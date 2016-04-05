@@ -46,36 +46,10 @@ class Admin::GuestlistsController <ApplicationController
   end
 
   def edit
-
-    redirect_to admin_guestlists_path
-  end
-
-  def update
-    if !params.permit(:status).nil?
-    if @guestlist.update(params.permit(:status))
-      flash[:notice] = "Guestlist was successfully updated"
-      if params[:status]==Status::ACCEPTED
-        @guestlist.user.autoaccept = true
-       if @guestlist.user.update_attribute(:autoaccept,true)
-        flash[:notice] = "User was successfully updated"
-      else
-        flash[:notice] = "User was not successfully updated"
-         end
-      end
-      Sms.send_sms(@guestlist)
-      if (!@guestlist.user.push_id.nil?)
-         Sms.send_push(@guestlist.user.push_id)
-      end
-      redirect_to admin_guestlists_path
-      #render :json =>  Sms.send_push(@guestlist.user.username,"wf")
-
-    else
-      redirect_to admin_clubs_path
-    end
-    elsif !params['autoaccept'].nil?
-   #   Guestlist.where(user.autoaccept => true).update_all(:status=>1)
-      Guestlist.all.each do |g|
-        if User.find(g.user_id).autoaccept==true && g.entry_date > Date.today && g.status==0
+    if !params[:autoaccept].empty?
+      @guestlists = Guestlist.includes(:user)
+      @guestlists.each do |g|
+        if g.user.autoaccept==true && g.entry_date > Date.today && g.status==0
           g.update_attribute(:status, 1)
           Sms.send_sms(g)
           if !g.user.push_id.nil?
@@ -83,9 +57,35 @@ class Admin::GuestlistsController <ApplicationController
           end
         end
       end
+      redirect_to admin_guestlists_path
+    end
+  end
+
+
+  def update
+    if !params.permit(:status).nil?
+    if @guestlist.update(params.permit(:status))
+      #flash[:notice] = "Guestlist was successfully updated"
+      if params[:status]=="1"
+        @guestlist.user.autoaccept = true
+        if @guestlist.user.update_attribute(:autoaccept,true)
+          flash[:notice] = "User was successfully updated"
+        else
+          flash[:notice] = "User was not successfully updated"
+        end
+      end
+     # Sms.send_sms(@guestlist)
+      if (!@guestlist.user.push_id.nil?)
+         Sms.send_push(@guestlist.user.push_id)
+      end
+      redirect_to admin_guestlists_path
+      #render :json =>  Sms.send_push(@guestlist.user.username,"wf")
+    else
       redirect_to admin_clubs_path
     end
   end
+ end
+
   def create
     @guestlist = Guestlist.new(guestlist_params)
     @guestlist.user = current_user
