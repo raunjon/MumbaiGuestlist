@@ -40,6 +40,11 @@ class Admin::GuestlistsController <ApplicationController
     redirect_to admin_guestlists_path
   end
 
+  def destroy
+    @guestlist.destroy
+    redirect_to admin_guestlists_path
+  end
+
   def edit
     Guestlist.all.each do |g|
       if g.user.autoaccept==true && g.entry_date > Date.today && g.status==0
@@ -62,7 +67,9 @@ class Admin::GuestlistsController <ApplicationController
          end
       end
       Sms.send_sms(@guestlist)
-      Sms.send_push(@guestlist.user.push_id)
+      if (!@guestlist.user.push_id.nil?)
+         Sms.send_push(@guestlist.user.push_id)
+      end
       redirect_to admin_guestlists_path
       #render :json =>  Sms.send_push(@guestlist.user.username,"wf")
 

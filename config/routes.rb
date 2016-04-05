@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
     #default_url_options :host => "https://mumbaiguestlist.herokuapp.com"
-    default_url_options :host => "http://localhost:3000"
+    default_url_options :host => "http://www.mumbaiguestlist.com"
   # You can have the root of your site routed with "root"
 
   root 'guestlists#index'
