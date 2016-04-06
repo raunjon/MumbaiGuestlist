@@ -3,7 +3,8 @@ class Admin::UsersController <ApplicationController
   before_action :require_admin_user
 
   def index
-    @users = User.paginate(page: params[:page],per_page: 20);
+    #@users = User.paginate(page: params[:page],per_page: 1);
+    @users = User.all
   end
 
   def new

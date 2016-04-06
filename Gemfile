@@ -28,7 +28,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 #Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
-#gem 'will_paginate', '3.0.7'
+gem 'will_paginate', '3.0.7'
 gem 'bootstrap-will_paginate', '0.0.10'
 gem 'bootstrap-datepicker-rails'
 gem 'omniauth-facebook', '~> 1.4.1'
@@ -50,7 +50,7 @@ gem 'parse-ruby-client'
 gem 'kaminari'
 gem 'rename'
 
-gem 'will_paginate'
+#gem 'will_paginate'
 group :development, :test do
   gem 'sqlite3'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
