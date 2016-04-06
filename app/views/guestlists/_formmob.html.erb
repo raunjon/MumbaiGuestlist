@@ -37,13 +37,13 @@
           </select>
         </div>
         <div class="form-mob">
-          <%= f.text_field :entry_date, :id => 'datetimepicker', placeholder:"Date",autofocus:false %>
+          <%= f.date_field  :entry_date, :value => Time.now.strftime('%Y-%m-%d'), :placeholder=>"Date", autofocus:false, :readonly => true %>
         </div>
         <div class="form-mob">
-          <%= f.text_field :couples, class:"",placeholder:"Couples",autofocus:true %>
+          <%= f.phone_field :couples, class:"", placeholder:"Couples",autofocus:true %>
         </div>
         <div class="form-mob">
-          <%= f.text_field :mobile, class:"",placeholder:"Mobile",autofocus:true, :value=>mobile %>
+          <%= f.phone_field :mobile, class:"", placeholder:"Mobile",autofocus:true, :value=>mobile %>
         </div>
         <div class="form-mob">
           <%= f.submit "Submit", class:"submit-mob" %>
@@ -57,9 +57,9 @@
 
 <script type="text/javascript">
   $(function () {
-    $('#datetimepicker').datepicker({ startDate: "dateToday",
-      format: 'dd-MM-yyyy' , daysOfWeekDisabled: [0,1,2,4], todayHighlight: true
-    });
+//    $('#datetimepicker').datepicker({ startDate: "dateToday",
+//      format: 'dd-MM-yyyy' , daysOfWeekDisabled: [0,1,2,4], todayHighlight: true
+//    });
   });
 
 </script>

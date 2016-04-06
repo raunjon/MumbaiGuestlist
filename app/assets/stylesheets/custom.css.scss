@@ -59,8 +59,17 @@ a {text-decoration:none;  color: #000000;;}
 .form-mob1 {   overflow:hidden; text-align: center; margin: 0 auto; margin-bottom:2%; margin-top: 10%}
 .form-mob1 input { position:fixed; left: 15%; margin-top: 30%;
   height:9%; width:60%; font-size:14px; display : block;  border-color:#575a59; border-style:solid; border-width:6px; text-align:center; overflow:hidden;}
-.form-mob {}
-.form-mob input[type=text], input[type=sedlect] {
+.form-mob input[type=date] {
+  -webkit-appearance: none; -moz-appearance: none;
+  display: block;
+  margin: 0 auto;
+  margin-top: 2%;
+  width: 60%; height: 50px;
+  text-align: center;
+  line-height: 40px; font-size: 17px;
+  border: 1px solid #575a59;
+}
+.form-mob input[type=text], input[type=tel],input[type=sedlect] {
   -webkit-appearance: none; -moz-appearance: none;
   display: block;
   margin: 0 auto;
@@ -70,6 +79,7 @@ a {text-decoration:none;  color: #000000;;}
   line-height: 10px; font-size: 17px;
   border: 1px solid #575a59;
 }
+
 .facebook-bt {
   -webkit-appearance: none; -moz-appearance: none;
   display: block;
@@ -89,6 +99,7 @@ a {text-decoration:none;  color: #000000;;}
   margin: 0 auto;
   margin-top: 2%;
   text-align: center;
+  text-indent: 30%;
   background-color: white;
   width: 60%; height: 50px;
   line-height: 40px; font-size: 17px;

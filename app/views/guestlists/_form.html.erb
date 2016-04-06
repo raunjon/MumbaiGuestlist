@@ -40,8 +40,8 @@
              <%end%>
             </select>
           <%= f.text_field :entry_date, :id => 'datetimepicker', placeholder:"Date",autofocus:false, :readonly => true %>
-          <%= f.text_field :couples, class:"",placeholder:"Couples",autofocus:true %>
-          <%= f.text_field :mobile, class:"",placeholder:"Mobile",autofocus:true, :value=>mobile %>
+          <%= f.number_field :couples, class:"",placeholder:"Couples",autofocus:true %>
+          <%= f.number_field :mobile, class:"",placeholder:"Mobile",autofocus:true, :value=>mobile %>
           <%= f.submit "Submit" %>
       <% end %>
       </div>
