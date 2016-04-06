@@ -21,7 +21,9 @@
         <div class="logo"><a href="<%=root_path%>"><%= image_tag("logo.png") %></a></div>
     <%end%>
 </div>
-<%= render 'layouts/footer'%>
+<% if !is_namespace_admin? && !mobile? %>
+  <%= render 'layouts/footer'%>
+<%end%>
 <%= debug(params) if Rails.env.development?%>
 </body>
 </html>
