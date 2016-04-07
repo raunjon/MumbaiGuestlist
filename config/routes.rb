@@ -24,7 +24,7 @@ Rails.application.routes.draw do
 
   # , constraints: { subdomain: 'api' }
 
-    namespace :api, :defaults => {:format => :json} do
+    namespace :api, :defaults => {:format => :json} , constraints: { subdomain: 'api' }do
       resources :clubs
       resources :guestlists
       get 'loginUser', to: 'sessions#index'

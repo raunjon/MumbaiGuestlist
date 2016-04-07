@@ -26,11 +26,11 @@ class Api::SessionsController < Api::BaseController
     request.cookies[:user_id] = {
         :value => user.id,
         :expires => 1.year.from_now,
-        :domain => 'http://localhost:3000',
+        :domain => 'http://mumbaiguestlist.com',
         :httponly => false
     }
-    render :json => request.env["omniauth.auth"]
-    #render :json => user, :except =>[:password_digest]
+    #render :json => request.env["omniauth.auth"]
+    render :json => user, :except =>[:password_digest]
   end
 
   def destroy
