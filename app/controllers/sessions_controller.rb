@@ -7,7 +7,6 @@ class SessionsController <ApplicationController
   end
 
   def index
-  #  session[:user_id] = cookies[:user_id]
     if logged_in?
       render :json => current_user
     else
@@ -22,7 +21,12 @@ class SessionsController <ApplicationController
     end
     user = User.from_omniauth(request.env["omniauth.auth"],source)
     session[:user_id] = user.id
-    redirect_to guestlists_path
+    if user.admin==true
+      redirect_to admin_clubs_path
+    else
+      redirect_to guestlists_path
+    end
+
     #render :json => user
    end
 
