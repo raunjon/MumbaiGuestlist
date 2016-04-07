@@ -7,6 +7,7 @@
         <th>Username</th>
         <th>Gender</th>
         <th>Email</th>
+        <th>Mobile</th>
         <th>AutoAccept</th>
         <th>Admin</th>
         <th>Source</th>
@@ -25,6 +26,7 @@
             <td><%=link_to user.name, url,:target => '_blank'%></td>
             <td><%=user.gender%></td>
             <td><%=user.email%></td>
+            <td><%=user.mobile%></td>
             <td><%=user.autoaccept%></td>
             <td><%=user.admin%></td>
             <td><%=get_source(user.source)%></td>

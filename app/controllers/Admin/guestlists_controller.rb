@@ -71,19 +71,21 @@ class Admin::GuestlistsController <ApplicationController
       if params[:status]=="1"
         @guestlist.user.autoaccept = true
         if @guestlist.user.update_attribute(:autoaccept,true)
-          flash[:notice] = "User was successfully updated"
+          flash[:notice] = "Entry and User were successfully updated"
         else
-          flash[:notice] = "User was not successfully updated"
+          flash[:notice] = "Entry and User were not successfully updated"
         end
       end
-     # Sms.send_sms(@guestlist)
-      if (!@guestlist.user.push_id.nil?)
+      Sms.send_sms(@guestlist)
+      if !@guestlist.user.push_id.nil?
          Sms.send_push(@guestlist.user.push_id)
       end
-      redirect_to admin_guestlists_path
+      redirect_to (:back)
       #render :json =>  Sms.send_push(@guestlist.user.username,"wf")
     else
-      redirect_to admin_clubs_path
+      flash[:notice] = "Error"
+      redirect_to (:back)
+
     end
   end
  end
