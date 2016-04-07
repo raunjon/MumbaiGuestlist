@@ -4,7 +4,7 @@ class Admin::UsersController <ApplicationController
 
   def index
     #@users = User.paginate(page: params[:page],per_page: 1);
-    @users = User.all.order(:user_id)
+    @users = User.all.order(:id)
   end
 
   def new
