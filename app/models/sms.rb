@@ -24,7 +24,7 @@ include Plivo
     if guestlist.status == 1
       message = 'You\'re entry for ' + guestlist.club.title + ' has been accepted for ' + entry_date_string + ' Please read the club policy carefully. Thank you for using MumbaiGuestlist'
     elsif guestlist.status == 2
-      message = 'You\'re entry for ' + guestlist.club.title + ' has been declined for ' + entry_date_string + ' Please try another club or date. Thank you for using MumbaiGuestlist'
+      message = 'Sorry, we were unable to process you\'re entry for ' + guestlist.club.title + '  for ' + entry_date_string + '. Due to it being full. Please try another club. Thank you for using MumbaiGuestlist'
     else
       message = 'We have received your entry for ' + guestlist.club.title + ' for ' + entry_date_string  + ' We shall forward your details yo club and confirm it shortly.'
     end
