@@ -22,9 +22,9 @@ Rails.application.routes.draw do
 
   resources :guestlists
 
-  # , constraints: { subdomain: 'api' }
+  # constraints: { subdomain: 'api' }
 
-    namespace :api, :defaults => {:format => :json} , constraints: { subdomain: 'api' }do
+    namespace :api, :defaults => {:format => :json} do
       resources :clubs
       resources :guestlists
       get 'loginUser', to: 'sessions#index'
