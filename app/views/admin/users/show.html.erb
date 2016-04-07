@@ -4,7 +4,7 @@
     Email: <%=@user.email %><br/>
     Mobile: <%=@user.mobile %><br/>
     Gender: <%=@user.gender %><br/>
-    Birthday: <%=@user.birthdate %><br/>
+    Birthday: <%=@user.birthday %><br/>
 
     Total entries count: <%=@user.guestlists.count %>
     <%= render 'admin/guestlists/guestlist', js:admin_user_url(@user, :format => :json)%>

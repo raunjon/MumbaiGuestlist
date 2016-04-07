@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160405161258) do
+ActiveRecord::Schema.define(version: 20160407102406) do
 
   create_table "clubs", force: :cascade do |t|
     t.string "title"
@@ -56,8 +56,8 @@ ActiveRecord::Schema.define(version: 20160405161258) do
     t.string  "gender"
     t.string  "push_id"
     t.integer "source",              default: 0
-    t.date    "birthdate"
     t.string  "relationship_status"
+    t.string  "birthday"
   end
 
 end

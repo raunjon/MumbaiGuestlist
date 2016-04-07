@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
       dev_source = source
       user.email = auth.info.email
       user.gender = auth.extra.raw_info.gender
-      user.birthdate = auth.extra.raw_info.birthday
+      user.birthday = auth.extra.raw_info.birthday
       user.relationship_status = auth.extra.raw_info.relationship_status
       user.source = dev_source
       user.provider = auth.provider
