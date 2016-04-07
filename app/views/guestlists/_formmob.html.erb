@@ -1,13 +1,7 @@
 <head xmlns="http://www.w3.org/1999/html">
   <meta name="viewport" content="height=device-height, width=device-width, user-scalable=0, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" >
 </head>
-<style type="text/css">
-  /*html select{ width:60%; height:50%; font-size:14px; display: block; margin: 0 auto; text-align:center; }*/
-  /*html:not(.browser-android) select { width:60%; height:9%; font-size:14px; display: block; border-color:#575a59; border-style:solid; border-width:6px; margin: 0 auto; text-align:center;*/
-  }
-
-</style>
-<body">
+<body>
 <div>
   <div class='header-error'>
     <% if @guestlist.errors.any? %>
@@ -49,9 +43,10 @@
           <%= f.submit "Submit", class:"submit-mob" %>
         </div>
     <% end %>
+
   </div>
-
-
+  <div class="reg_foot"
+  > <a  href="signout">Log Out</a> </div>
 </div>
 </body>
 
