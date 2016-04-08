@@ -64,7 +64,7 @@ class GuestlistsDatatable
   end
 
   def sort_column
-    columns = %w[user_id entry_date title couples mobile status]
+    columns = %w[user_id entry_date title couples mobile status source]
     columns[params[:iSortCol_0].to_i]
   end
 
