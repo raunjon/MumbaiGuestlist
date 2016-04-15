@@ -35,7 +35,7 @@
             <% end %>
           <input type="text" placeholder="Name", value=<%=username%>></input>
             <select  class="select-club" name=<%=:club_id%>>
-            <% Club.all.each do  |c|%>
+            <% Club.where(:enabled => true).each do  |c|%>
             <option value=<%=c.id%> selected="selected"><%=c.title%></option>
              <%end%>
             </select>

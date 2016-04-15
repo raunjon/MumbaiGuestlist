@@ -53,6 +53,6 @@ class Admin::ClubsController < ApplicationController
     @club = Club.find(params[:id])
   end
   def club_params
-    params.require(:club).permit(:title)
+    params.require(:club).permit(:title, :enabled)
   end
 end

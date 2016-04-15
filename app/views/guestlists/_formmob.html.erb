@@ -25,7 +25,7 @@
         </div>
         <div class="form-mob">
           <select name=<%=:club_id%> class="select-mob">
-            <% Club.all.each do  |c|%>
+            <% Club.where(:enabled => true).each do  |c|%>
                 <option value=<%=c.id%> selected="selected"><%=c.title%></option>
             <%end%>
           </select>

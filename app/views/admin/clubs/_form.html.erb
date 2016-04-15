@@ -17,6 +17,16 @@
             <%= f.text_field :title, class:"form-control",placeholder:"Title of club",autofocus:true %>
           </div>
         </div>
+
+        <div class='form-group'>
+          <div class='control-label col-sm-2'>
+            <%= f.label :enabled %>
+          </div>
+          <div class='col-sm-8'>
+            <%= f.check_box :enabled, class:"form-control",placeholder:"Enabled",autofocus:true %>
+          </div>
+        </div>
+
         <div class='form-group'>
           <div class='col-sm-offset-2 col-sm-10'>
             <%= f.submit class:'btn btn-primary btn-lg' %>

@@ -1,7 +1,7 @@
 class Api::ClubsController < Api::BaseController
   before_action :set_club, only: [:show]
   def index
-    @clubs = Club.all
+    @clubs = Club.where(:enabled => true)
 
     respond_to do |format|
         if request.format.symbol == :json
