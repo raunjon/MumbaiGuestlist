@@ -5,6 +5,7 @@
     <tr>
       <th>Club Id.</th>
       <th>Title</th>
+      <th>Enabled</th>
       <th>Show Entries</th>
       <th>Edit</th>
       <th>Delete</th>
@@ -14,6 +15,7 @@
         <tr>
           <td><%=club.id%></td>
           <td><%=club.title%></td>
+          <td><%=club.enabled%></td>
           <td><%= link_to "Show Entries",admin_club_path(club)%></td>
           <td><%= link_to "Edit",edit_admin_club_path(club)%></td>
           <td><%= link_to "Delete",admin_club_path(club),method: :delete, data: {confirm: 'Are you sure?'}%></td>
