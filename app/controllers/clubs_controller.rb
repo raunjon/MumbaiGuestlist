@@ -9,7 +9,9 @@ class ClubsController < ApplicationController
   end
 
   def show
-
+    @club = Instagram.user_recent_media('1416669684', {:count => 1})
+    render :json => @club
+    console
   end
 
   private

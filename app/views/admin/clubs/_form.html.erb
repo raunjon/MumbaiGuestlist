@@ -28,10 +28,113 @@
         </div>
 
         <div class='form-group'>
+          <div class='control-label col-sm-2'>
+            <%= f.label :description %>
+          </div>
+          <div class='col-sm-8'>
+            <%= f.text_field :description, class:"form-control",placeholder:"Description",autofocus:true %>
+          </div>
+        </div>
+
+        <div class='form-group'>
+          <div class='control-label col-sm-2'>
+            <%= f.label :address %>
+          </div>
+          <div class='col-sm-8'>
+            <%= f.text_field :address, class:"form-control",placeholder:"Address",autofocus:true %>
+          </div>
+        </div>
+
+        <div class='form-group'>
+          <div class='control-label col-sm-2'>
+            <%= f.label :latitude %>
+          </div>
+          <div class='col-sm-8'>
+            <%= f.text_field :latitude, class:"form-control",placeholder:"Latitude",autofocus:true %>
+          </div>
+        </div>
+
+        <div class='form-group'>
+          <div class='control-label col-sm-2'>
+            <%= f.label :longitude %>
+          </div>
+          <div class='col-sm-8'>
+            <%= f.text_field :longitude, class:"form-control",placeholder:"Longitude",autofocus:true %>
+          </div>
+        </div>
+
+
+
+            <%= f.fields_for :feed do |feed| %>
+                <div class='form-group'>
+                  <div class='control-label col-sm-2'>
+                    <%= feed.label :twitter_handle %>
+                  </div>
+                  <div class='col-sm-8'>
+                    <%= feed.text_field :twitter_handle, class:"form-control",placeholder:"Twitter Handle",autofocus:true %>
+                  </div>
+                </div>
+
+                <div class='form-group'>
+                  <div class='control-label col-sm-2'>
+                    <%= feed.label :instagram_handle %>
+                  </div>
+                  <div class='col-sm-8'>
+                    <%= feed.text_field :instagram_handle, class:"form-control",placeholder:"Instagram Handle",autofocus:true %>
+                  </div>
+                </div>
+
+
+                <div class='form-group'>
+                  <div class='control-label col-sm-2'>
+                    <%= feed.label :twitter_id %>
+                  </div>
+                  <div class='col-sm-8'>
+                    <%= feed.text_field :twitter_id, class:"form-control",placeholder:"Twitter Id",autofocus:true %>
+                  </div>
+                </div>
+
+                <div class='form-group'>
+                  <div class='control-label col-sm-2'>
+                    <%= feed.label :instagram_id %>
+                  </div>
+                  <div class='col-sm-8'>
+                    <%= feed.text_field :instagram_id, class:"form-control",placeholder:"Instagram Id",autofocus:true %>
+                  </div>
+                </div>
+
+
+                <div class='form-group'>
+                  <div class='control-label col-sm-2'>
+                    <%= feed.label :instagram_location %>
+                  </div>
+                  <div class='col-sm-8'>
+                    <%= feed.text_field :instagram_location, class:"form-control",placeholder:"Instagram Venue Id",autofocus:true %>
+                  </div>
+                </div>
+
+            <div class='form-group'>
+              <div class='control-label col-sm-2'>
+                <%= feed.label :hashtag %>
+              </div>
+              <div class='col-sm-8'>
+                <%= feed.text_field :hashtag, class:"form-control",placeholder:"Hashtags",autofocus:true %>
+              </div>
+            </div>
+
+            <% end %>
+
+
+
+        <div class='form-group'>
           <div class='col-sm-offset-2 col-sm-10'>
             <%= f.submit class:'btn btn-primary btn-lg' %>
           </div>
         </div>
+
+
+
+
     <% end %>
     <div class="col-xs-4 col-xs-offset-4">
       <%= link_to "Cancel Request and return to clubs listing", admin_clubs_path%>

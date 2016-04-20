@@ -38,6 +38,7 @@ gem 'bootstrap3-datetimepicker-rails', '~> 4.14.30'
 gem 'figaro'
 gem 'plivo'
 gem 'parse-ruby-client'
+gem 'brandspotter', '~> 1.0.0'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
@@ -49,6 +50,8 @@ gem 'parse-ruby-client'
   gem 'jquery-ui-rails'
 gem 'kaminari'
 gem 'rename'
+gem 'instagram', :git => 'git://github.com/Instagram/instagram-ruby-gem.git'
+gem 'faraday', '~> 0.8.9'
 
 #gem 'will_paginate'
 group :development, :test do

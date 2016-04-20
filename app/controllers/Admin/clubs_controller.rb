@@ -11,6 +11,7 @@ class Admin::ClubsController < ApplicationController
 
   def new
     @club = Club.new
+    @club.build_feed
   end
 
   def create
@@ -37,9 +38,12 @@ class Admin::ClubsController < ApplicationController
   end
 
   def update
+   # render :json => club_params
+
     if @club.update(club_params)
       flash[:notice] = "Club was successfully updated"
       redirect_to admin_clubs_path
+      #render :json => club_params
     end
   end
 
@@ -53,6 +57,6 @@ class Admin::ClubsController < ApplicationController
     @club = Club.find(params[:id])
   end
   def club_params
-    params.require(:club).permit(:title, :enabled)
+    params.require(:club).permit!
   end
 end

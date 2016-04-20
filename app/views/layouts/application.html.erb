@@ -21,6 +21,7 @@
         <div class="logo"><a href="<%=root_path%>"><%= image_tag("logo.png") %></a></div>
     <%end%>
 </div>
+<%=console%>
 <% if !is_namespace_admin? && !mobile? %>
   <%= render 'layouts/footer'%>
 <%end%>

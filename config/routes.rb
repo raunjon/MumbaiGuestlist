@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
 
   root 'guestlists#index'
-  get 'clubs', to: 'clubs#index'
+ # get 'clubs', to: 'clubs#index'
   get '/mgl', to: redirect('/guestlists#index')
   # get 'login', to: "/auth/facebook"
  # post 'login', to: "auth/facebook"
@@ -17,6 +17,8 @@ Rails.application.routes.draw do
     get 'signout', to: 'sessions#destroy', as: 'signout'
     get 'loginUser', to: 'sessions#index'
 
+    resources :clubs
+    resources :feeds
     resources :sessions, only: [:create, :destroy]
     resource :home, only: [:show]
 
@@ -27,6 +29,7 @@ Rails.application.routes.draw do
     namespace :api, :defaults => {:format => :json} do
       resources :clubs
       resources :guestlists
+      resources :feeds
       get 'loginUser', to: 'sessions#index'
       get 'signout', to: 'sessions#destroy', as: 'signout'
       post 'guestlists/new', to: 'guestlists#create'
@@ -39,6 +42,7 @@ Rails.application.routes.draw do
     mount RailsAdmin::Engine => '/database', as: 'rails_admin'
     resources :clubs
     resources :guestlists
+    resources :feeds
     get '/guestlists/?status=:status', to: 'guestlists#index', as: "status_params"
     get '/guestlists/?date=:date', to: 'guestlists#index', as: "date_params"
     put '/guestlists', to: 'guestlists#edit'

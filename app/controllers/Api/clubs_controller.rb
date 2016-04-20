@@ -1,5 +1,5 @@
 class Api::ClubsController < Api::BaseController
-  before_action :set_club, only: [:show]
+  before_action :set_club, only: [:edit, :update, :show, :destroy]
   def index
     @clubs = Club.where(:enabled => true)
 
@@ -17,7 +17,7 @@ class Api::ClubsController < Api::BaseController
   end
 
   def show
-
+    @club = Instagram.user_recent_media(@club.insta_handle, {:count => 1})
   end
 
   private
@@ -25,6 +25,6 @@ class Api::ClubsController < Api::BaseController
     @club = Club.find(params[:id])
   end
   def club_params
-    params.require(:club).permit(:title)
+    params.require(:club).permit!
   end
 end

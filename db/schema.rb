@@ -11,11 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160415071641) do
+ActiveRecord::Schema.define(version: 20160418072759) do
 
   create_table "clubs", force: :cascade do |t|
     t.string  "title"
-    t.boolean "enabled", default: true
+    t.boolean "enabled",     default: true
+    t.string  "description"
+    t.string  "address"
+    t.float   "latitude"
+    t.float   "longitude"
+    t.string  "club_policy"
+  end
+
+  create_table "feeds", force: :cascade do |t|
+    t.string  "twitter_id"
+    t.string  "twitter_handle"
+    t.string  "instagram_id"
+    t.string  "instagram_handle"
+    t.string  "instagram_location"
+    t.integer "club_id"
+    t.string  "hashtag"
   end
 
   create_table "guestlists", force: :cascade do |t|
